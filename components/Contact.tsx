@@ -1,11 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
+import { FaLinkedin, FaFacebook, FaTiktok, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 
 const socialLinks = [
-  { icon: <FaGithub />, href: "https://github.com/votre-profil", label: "GitHub" },
-  { icon: <FaLinkedin />, href: "https://linkedin.com/in/votre-profil", label: "LinkedIn" },
-  { icon: <FaTwitter />, href: "https://twitter.com/votre-profil", label: "Twitter" }
+  { icon: <FaLinkedin />, href: "https://www.linkedin.com/in/sekou-amara-bamba-460844263", label: "LinkedIn" },
+  { icon: <FaTiktok />, href: "https://www.tiktok.com/@visual.basic.6.0", label: "TikTok" },
+  { icon: <FaFacebook />, href: "https://www.facebook.com/share/1HMBRtdBfW/", label: "Facebook" },
 ];
 
 export default function Contact() {

@@ -17,6 +17,11 @@ const nunito = Nunito({
 export const metadata = {
   title: "Bamba Sekou Amara | Développeur Full Stack",
   description: "Portfolio premium de Bamba Sekou Amara, développeur Full Stack.",
+  icons: {
+    icon: "/assets/photo-bamba-sekou-amara-pro.jpg",
+    shortcut: "/assets/photo-bamba-sekou-amara-pro.jpg",
+    apple: "/assets/photo-bamba-sekou-amara-pro.jpg",
+  },
 };
 
 export default function RootLayout({

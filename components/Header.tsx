@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
+import { FaLinkedin, FaEnvelope, FaFacebook, FaTiktok } from "react-icons/fa";
 
 export default function Header() {
   const links = [
@@ -49,9 +49,10 @@ export default function Header() {
         transition={{ delay: 1.8, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
         {[
-          { href: "https://linkedin.com/in/bambasekou", icon: <FaLinkedin size={18} /> },
-          { href: "https://github.com/bambasekou", icon: <FaGithub size={18} /> },
-          { href: "mailto:contact@bambasekou.dev", icon: <FaEnvelope size={18} /> },
+          { href: "https://www.linkedin.com/in/sekou-amara-bamba-460844263", icon: <FaLinkedin size={18} /> },
+          { href: "https://www.tiktok.com/@visual.basic.6.0", icon: <FaTiktok size={18} /> },
+          { href: "https://www.facebook.com/share/1HMBRtdBfW/", icon: <FaFacebook size={18} /> },
+          { href: "mailto:sekouamarabamba@gmail.com", icon: <FaEnvelope size={18} /> },
         ].map((s, i) => (
           <Link 
             key={i}
