@@ -239,7 +239,7 @@ export default function CVPage() {
               border: '1px solid rgba(212,175,55,0.2)',
             }}>
               <div style={{ background: 'white', padding: '5px', borderRadius: '5px' }}>
-                <QRCodeSVG value="https://bamba-sekou-amara.dev" size={56} fgColor={DARK} bgColor="#ffffff" level="M" />
+                <QRCodeSVG value="https://bamba-sekou-amara-porfolio-sekou.vercel.app/" size={56} fgColor={DARK} bgColor="#ffffff" level="M" />
               </div>
               <p style={{ fontSize: '8.5px', color: GOLD, letterSpacing: '0.05em', fontWeight: 600 }}>MON PORTFOLIO</p>
             </div>
