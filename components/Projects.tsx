@@ -1,6 +1,6 @@
 "use client";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import Button from "./Button";
 import {
   SiNestjs,
@@ -19,18 +19,13 @@ import {
   SiFramer,
 } from "react-icons/si";
 
-// ─── Microlink screenshot helper ─────────────────────────────────────────────
-function screenshotUrl(url: string) {
-  return `https://api.microlink.io?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`;
-}
-
 // ─── PROJETS PERSONNELS ───────────────────────────────────────────────────────
 const personalProjects = [
   {
     title: "Post-it Notes Management",
     description:
       "Application web de gestion de notes permettant de créer, consulter, modifier et supprimer des post-it, avec stockage local puis synchronisation via une API REST.",
-    role: "Développement de composants Vue.js, gestion de l'état avec Vuex, intégration d'API REST, routage et gestion du stockage des données.",
+    role: "Développement de composants Vue.js, gestion de l'état avec Vuex, intégration d'API REST, mise en place du routage et gestion du stockage des données.",
     tech: [
       { name: "Vue.js", icon: <SiVuedotjs /> },
       { name: "Vuex", icon: <span className="font-bebas text-xs">VX</span> },
@@ -39,13 +34,13 @@ const personalProjects = [
     ],
     link: "https://phenomenal-raindrop-ce5195.netlify.app/",
     type: "Individuel",
-    accentColor: "rgba(234,179,8,0.6)",
+    gradient: "from-yellow-900/40 to-black",
   },
   {
     title: "Portfolio Génie Civil",
     description:
       "Conception et développement d'un portfolio web premium dédié à un technicien supérieur en Génie Civil spécialisé en bâtiment, avec dashboard d'administration et gestion des médias.",
-    role: "Développeur Full Stack — Architecture, interface responsive, dashboard admin, optimisation SEO et déploiement.",
+    role: "Développeur Full Stack — Conception de l'architecture, développement de l'interface responsive, création du dashboard d'administration, optimisation SEO et déploiement.",
     tech: [
       { name: "Next.js 15", icon: <SiNextdotjs /> },
       { name: "TypeScript", icon: <SiTypescript /> },
@@ -55,7 +50,7 @@ const personalProjects = [
     ],
     link: "https://cisse-ibrahim-matche-portfolio-lime-rho.vercel.app/",
     type: "Portfolio",
-    accentColor: "rgba(100,116,139,0.6)",
+    gradient: "from-slate-700/40 to-black",
   },
 ];
 
@@ -73,7 +68,7 @@ const collaborativeProjects = [
     ],
     link: "https://projet-film-qgen4ocak-seka.vercel.app/",
     type: "Frontend",
-    accentColor: "rgba(185,28,28,0.6)",
+    gradient: "from-red-900/40 to-black",
   },
   {
     title: "My Show Time",
@@ -89,7 +84,7 @@ const collaborativeProjects = [
     link: "#",
     linkLabel: "En cours...",
     type: "Backend",
-    accentColor: "rgba(30,58,138,0.6)",
+    gradient: "from-blue-900/40 to-black",
   },
   {
     title: "Trelltech",
@@ -105,7 +100,7 @@ const collaborativeProjects = [
     link: "#",
     linkLabel: "En cours...",
     type: "Mobile",
-    accentColor: "rgba(79,70,229,0.6)",
+    gradient: "from-primary/40 to-black",
   },
 ];
 
@@ -115,7 +110,7 @@ const hackathonProjects = [
     title: "Marché +",
     description:
       "Application mobile B2B permettant aux commerçants de trouver des fournisseurs, comparer les prix du marché et suivre les tendances grâce à l'analyse intelligente des données. (Hackathon — Équipe de 5 personnes)",
-    role: "Développeur Full Stack — Architecture, développement mobile/backend, gestion des utilisateurs, catalogue produits, comparaison des prix et analyse du marché.",
+    role: "Développeur Full Stack — Conception de l'architecture, développement mobile/backend, gestion des utilisateurs, catalogue produits, comparaison des prix et intégration des fonctionnalités d'analyse du marché.",
     tech: [
       { name: "React Native", icon: <SiReact /> },
       { name: "Laravel", icon: <SiLaravel /> },
@@ -125,13 +120,13 @@ const hackathonProjects = [
     ],
     link: "https://macherplus.onrender.com/",
     type: "Hackathon",
-    accentColor: "rgba(21,128,61,0.6)",
+    gradient: "from-green-900/40 to-black",
   },
   {
     title: "BioLinK AI",
     description:
       "Plateforme mobile connectant citoyens, collecteurs et acteurs de la valorisation des déchets. Signalement, gestion des missions de collecte, suivi des interventions et valorisation des recyclables. (Hackathon — Équipe de 5 personnes)",
-    role: "En équipe — Conception, développement mobile/backend, gestion des utilisateurs, des rôles et des fonctionnalités principales.",
+    role: "En équipe — Participation à la conception, au développement mobile/backend, à la gestion des utilisateurs, des rôles et des fonctionnalités principales de la plateforme.",
     tech: [
       { name: "React Native", icon: <SiReact /> },
       { name: "Laravel", icon: <SiLaravel /> },
@@ -141,7 +136,7 @@ const hackathonProjects = [
     link: "#",
     linkLabel: "En cours...",
     type: "Hackathon",
-    accentColor: "rgba(6,95,70,0.6)",
+    gradient: "from-emerald-900/40 to-black",
   },
 ];
 
@@ -154,31 +149,37 @@ type Project = {
   link: string;
   linkLabel?: string;
   type: string;
-  accentColor: string;
+  gradient: string;
 };
 
 // ─── PROJECT CARD ─────────────────────────────────────────────────────────────
 function ProjectCard({ proj }: { proj: Project }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [imgLoaded, setImgLoaded] = useState(false);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
+
   const mouseXSpring = useSpring(x);
   const mouseYSpring = useSpring(y);
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["8deg", "-8deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-8deg", "8deg"]);
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
-    x.set((e.clientX - rect.left) / rect.width - 0.5);
-    y.set((e.clientY - rect.top) / rect.height - 0.5);
+    const xPct = (e.clientX - rect.left) / rect.width - 0.5;
+    const yPct = (e.clientY - rect.top) / rect.height - 0.5;
+    x.set(xPct);
+    y.set(yPct);
   };
-  const handleMouseLeave = () => { x.set(0); y.set(0); };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
 
   const isExternal = proj.link !== "#";
-  const screenshotSrc = isExternal ? screenshotUrl(proj.link) : null;
 
   return (
     <motion.div
@@ -186,110 +187,58 @@ function ProjectCard({ proj }: { proj: Project }) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className="group hover-magnetic relative w-full h-[520px] md:h-[600px] cursor-none rounded-2xl overflow-hidden border border-white/5"
+      className="group hover-magnetic relative w-full h-[520px] md:h-[600px] cursor-none rounded-2xl overflow-hidden"
     >
-      {/* ── Screenshot background (real capture) ── */}
-      {screenshotSrc && (
-        <img
-          src={screenshotSrc}
-          alt={proj.title}
-          onLoad={() => setImgLoaded(true)}
-          className={`absolute inset-0 w-full h-full object-cover object-top z-0 transition-all duration-1000 scale-105 group-hover:scale-110 ${
-            imgLoaded ? "opacity-100" : "opacity-0"
-          }`}
-          style={{ filter: "brightness(0.28) saturate(0.9)" }}
-        />
-      )}
-
-      {/* ── Fallback gradient (while loading or no link) ── */}
+      {/* Background */}
       <div
-        className="absolute inset-0 z-[1] transition-opacity duration-700"
-        style={{
-          background: `radial-gradient(ellipse at 60% 30%, ${proj.accentColor}, transparent 70%), linear-gradient(to bottom, #0a0a0a 0%, transparent 40%, #000000 100%)`,
-          opacity: imgLoaded && isExternal ? 0 : 1,
-        }}
+        className={`absolute inset-0 bg-gradient-to-br ${proj.gradient} z-0 group-hover:scale-105 transition-transform duration-1000 ease-out`}
       />
-
-      {/* ── Bottom gradient for readability ── */}
+      {/* Dark overlay for project background */
+        <div className="absolute inset-0 bg-black/30 z-[2] pointer-events-none" />
+        /* Grid overlay */}
       <div
-        className="absolute inset-0 z-[2] pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(to top, rgba(0,0,0,0.97) 0%, rgba(0,0,0,0.80) 35%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.15) 100%)",
-        }}
-      />
-
-      {/* ── Subtle accent top-right glow ── */}
-      <div
-        className="absolute top-0 right-0 w-64 h-64 rounded-full z-[2] pointer-events-none blur-3xl opacity-30 group-hover:opacity-50 transition-opacity duration-700"
-        style={{ background: proj.accentColor }}
-      />
-
-      {/* ── Grid dots overlay ── */}
-      <div
-        className="absolute inset-0 z-[3] opacity-10"
+        className="absolute inset-0 z-[1] opacity-20"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 1.5px 1.5px, rgba(255,255,255,0.4) 1px, transparent 0)",
-          backgroundSize: "28px 28px",
+            "radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)",
+          backgroundSize: "24px 24px",
         }}
       />
 
-      {/* ── Content ── */}
+      {/* Content */}
       <div
         className="absolute inset-0 z-10 flex flex-col p-8 md:p-12"
-        style={{ transform: "translateZ(40px)" }}
+        style={{ transform: "translateZ(50px)" }}
       >
-        {/* Top row: type badge + role */}
         <div className="flex justify-between items-start flex-wrap gap-2">
-          <span
-            className="font-nunito text-xs uppercase tracking-widest px-3 py-1 rounded-full border backdrop-blur-md"
-            style={{
-              color: proj.accentColor.replace("0.6", "1"),
-              borderColor: proj.accentColor.replace("0.6", "0.4"),
-              background: proj.accentColor.replace("0.6", "0.12"),
-            }}
-          >
+          <span className="font-nunito text-xs uppercase tracking-widest text-primary px-3 py-1 rounded-full border border-primary/30 backdrop-blur-md">
             {proj.type}
+          </span>
+          <span className="font-nunito text-sm text-white/50 text-right max-w-[60%]">
+            {proj.role}
           </span>
         </div>
 
-        {/* Bottom content */}
         <div className="mt-auto">
-          <h3 className="text-4xl md:text-5xl font-bebas text-white mb-3 tracking-wide group-hover:text-primary transition-colors duration-500 drop-shadow-lg">
+          <h3 className="text-4xl md:text-5xl font-bebas text-white mb-4 tracking-wide group-hover:text-primary transition-colors duration-500">
             {proj.title}
           </h3>
-
-          {/* Role */}
-          <p className="text-white/55 font-nunito text-xs uppercase tracking-widest mb-3 font-medium">
-            {proj.role}
-          </p>
-
-          {/* Description */}
-          <p className="text-white/80 font-nunito font-light leading-relaxed mb-7 max-w-xl text-sm md:text-base line-clamp-3">
+          <p className="text-white/60 font-nunito font-light leading-relaxed mb-8 max-w-md line-clamp-4">
             {proj.description}
           </p>
 
-          {/* Tech badges */}
-          <div className="flex flex-wrap gap-2 mb-8">
+          <div className="flex flex-wrap gap-3 mb-8">
             {proj.tech.map((t, i) => (
               <div
                 key={i}
-                className="flex items-center gap-1.5 text-white/75 text-xs font-nunito px-3 py-1.5 rounded-md backdrop-blur-md"
-                style={{
-                  background: "rgba(255,255,255,0.06)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                }}
+                className="flex items-center gap-2 text-white/80 text-sm font-nunito bg-white/5 px-3 py-1.5 rounded-md backdrop-blur-md"
               >
-                <span style={{ color: proj.accentColor.replace("0.6", "1") }}>
-                  {t.icon}
-                </span>
+                <span className="text-primary">{t.icon}</span>
                 {t.name}
               </div>
             ))}
           </div>
 
-          {/* CTA */}
           <div className="opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
             {isExternal ? (
               <Button href={proj.link} variant="secondary">
@@ -339,11 +288,11 @@ function ProjectGroup({
   return (
     <div className="mb-24 md:mb-40">
       <SectionLabel label={label} index={groupIndex} />
-      <div className="flex flex-col gap-12 md:gap-20" style={{ perspective: "1200px" }}>
+      <div className="flex flex-col gap-12 md:gap-24" style={{ perspective: "1000px" }}>
         {projects.map((proj, idx) => (
           <motion.div
             key={proj.title}
-            initial={{ opacity: 0, y: 80 }}
+            initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: idx * 0.15 }}
@@ -385,9 +334,26 @@ export default function Projects() {
           </div>
         </motion.div>
 
-        <ProjectGroup label="Projets Personnels"    projects={personalProjects}     groupIndex={0} />
-        <ProjectGroup label="Projets Collaboratifs" projects={collaborativeProjects} groupIndex={1} />
-        <ProjectGroup label="Projet Hackathon 2026" projects={hackathonProjects}     groupIndex={2} />
+        {/* ── Projets Personnels ── */}
+        <ProjectGroup
+          label="Projets Personnels"
+          projects={personalProjects}
+          groupIndex={0}
+        />
+
+        {/* ── Projets Collaboratifs ── */}
+        <ProjectGroup
+          label="Projets Collaboratifs"
+          projects={collaborativeProjects}
+          groupIndex={1}
+        />
+
+        {/* ── Projet Hackathon 2026 ── */}
+        <ProjectGroup
+          label="Projet Hackathon 2026"
+          projects={hackathonProjects}
+          groupIndex={2}
+        />
       </div>
     </section>
   );
