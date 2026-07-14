@@ -157,7 +157,11 @@ export default function Projects() {
           </div>
         </motion.div>
 
-        <div className="flex flex-col gap-12 md:gap-24" style={{ perspective: "1000px" }}>
+         {/* Subtitles */}
+          <h3 className="text-3xl font-bebas text-white mb-8 tracking-wide">Projet personnels</h3>
+          <h3 className="text-3xl font-bebas text-white mb-8 tracking-wide">Projets collaboratifs</h3>
+          <h3 className="text-3xl font-bebas text-white mb-8 tracking-wide">Projet Hackathon 2026</h3>
+          <div className="flex flex-col gap-12 md:gap-24" style={{ perspective: "1000px" }}>
           {projects.map((proj, idx) => (
             <motion.div
               key={proj.title}
