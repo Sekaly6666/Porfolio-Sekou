@@ -33,6 +33,7 @@ const personalProjects = [
       { name: "JavaScript", icon: <SiJavascript /> },
     ],
     link: "https://phenomenal-raindrop-ce5195.netlify.app/",
+    preview: "https://api.microlink.io/?url=https%3A%2F%2Fphenomenal-raindrop-ce5195.netlify.app%2F&screenshot=true&meta=false&embed=screenshot.url",
     type: "Individuel",
     gradient: "from-yellow-900/40 to-black",
   },
@@ -49,6 +50,7 @@ const personalProjects = [
       { name: "MongoDB", icon: <SiMongodb /> },
     ],
     link: "https://cisse-ibrahim-matche-portfolio-lime-rho.vercel.app/",
+    preview: "https://api.microlink.io/?url=https%3A%2F%2Fcisse-ibrahim-matche-portfolio-lime-rho.vercel.app%2F&screenshot=true&meta=false&embed=screenshot.url",
     type: "Portfolio",
     gradient: "from-slate-700/40 to-black",
   },
@@ -67,6 +69,7 @@ const collaborativeProjects = [
       { name: "JavaScript", icon: <SiJavascript /> },
     ],
     link: "https://projet-film-qgen4ocak-seka.vercel.app/",
+    preview: "https://api.microlink.io/?url=https%3A%2F%2Fprojet-film-qgen4ocak-seka.vercel.app%2F&screenshot=true&meta=false&embed=screenshot.url",
     type: "Frontend",
     gradient: "from-red-900/40 to-black",
   },
@@ -119,6 +122,7 @@ const hackathonProjects = [
       { name: "Python IA", icon: <SiPython /> },
     ],
     link: "https://macherplus.onrender.com/",
+    preview: "https://api.microlink.io/?url=https%3A%2F%2Fmacherplus.onrender.com%2F&screenshot=true&meta=false&embed=screenshot.url",
     type: "Hackathon",
     gradient: "from-green-900/40 to-black",
   },
@@ -143,6 +147,7 @@ const hackathonProjects = [
 // ─── Types ────────────────────────────────────────────────────────────────────
 type Project = {
   title: string;
+  preview?: string;
   description: string;
   role: string;
   tech: { name: string; icon: React.ReactNode }[];
@@ -189,15 +194,29 @@ function ProjectCard({ proj }: { proj: Project }) {
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       className="group hover-magnetic relative w-full h-[520px] md:h-[600px] cursor-none rounded-2xl overflow-hidden"
     >
-      {/* Background */}
-      <div
-        className={`absolute inset-0 bg-gradient-to-br ${proj.gradient} z-0 group-hover:scale-105 transition-transform duration-1000 ease-out`}
-      />
-      {/* Dark overlay for project background */}
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm z-[2] pointer-events-none" />
+      {/* Screenshot background — visible en arrière-plan, sombre */}
+      {proj.preview ? (
+        <>
+          {/* Image du site en arrière-plan */}
+          <img
+            src={proj.preview}
+            alt={`Aperçu ${proj.title}`}
+            className="absolute inset-0 w-full h-full object-cover object-top z-0 group-hover:scale-105 transition-transform duration-1000 ease-out"
+          />
+          {/* Voile sombre par-dessus l'image */}
+          <div className="absolute inset-0 bg-black/60 z-[1] pointer-events-none" />
+          {/* Dégradé en bas pour lisibilité du texte */}
+          <div className={`absolute inset-0 bg-gradient-to-t ${proj.gradient.replace('from-', 'from-').replace('/40', '/60')} via-transparent to-transparent z-[2] pointer-events-none`} />
+        </>
+      ) : (
+        /* Fallback gradient pour projets sans lien */
+        <div
+          className={`absolute inset-0 bg-gradient-to-br ${proj.gradient} z-0 group-hover:scale-105 transition-transform duration-1000 ease-out`}
+        />
+      )}
       {/* Grid overlay */}
       <div
-        className="absolute inset-0 z-[1] opacity-20"
+        className="absolute inset-0 z-[3] opacity-10"
         style={{
           backgroundImage:
             "radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)",
