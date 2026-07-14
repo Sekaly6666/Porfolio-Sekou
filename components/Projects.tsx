@@ -193,6 +193,8 @@ function ProjectCard({ proj }: { proj: Project }) {
       <div
         className={`absolute inset-0 bg-gradient-to-br ${proj.gradient} z-0 group-hover:scale-105 transition-transform duration-1000 ease-out`}
       />
+      {/* Dark overlay for project background */}
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm z-[2] pointer-events-none" />
       {/* Grid overlay */}
       <div
         className="absolute inset-0 z-[1] opacity-20"
