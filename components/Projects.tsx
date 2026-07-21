@@ -35,6 +35,7 @@ const personalProjects = [
     link: "https://phenomenal-raindrop-ce5195.netlify.app/",
     type: "Individuel",
     gradient: "from-yellow-900/40 to-black",
+    image: "/assets/post-it.png.png",
   },
   {
     title: "Portfolio Génie Civil",
@@ -51,6 +52,7 @@ const personalProjects = [
     link: "https://cisse-ibrahim-matche-portfolio-lime-rho.vercel.app/",
     type: "Portfolio",
     gradient: "from-slate-700/40 to-black",
+    image: "/assets/portfolio-genie-civil.png.png",
   },
 ];
 
@@ -69,6 +71,7 @@ const collaborativeProjects = [
     link: "https://projet-film-qgen4ocak-seka.vercel.app/",
     type: "Frontend",
     gradient: "from-red-900/40 to-black",
+    image: "/assets/rotten-tomatoes.png.png",
   },
   {
     title: "My Show Time",
@@ -85,6 +88,7 @@ const collaborativeProjects = [
     linkLabel: "En cours...",
     type: "Backend",
     gradient: "from-blue-900/40 to-black",
+    image: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=2070&auto=format&fit=crop",
   },
   {
     title: "Trelltech",
@@ -101,6 +105,7 @@ const collaborativeProjects = [
     linkLabel: "En cours...",
     type: "Mobile",
     gradient: "from-primary/40 to-black",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
   },
 ];
 
@@ -121,6 +126,7 @@ const hackathonProjects = [
     link: "https://macherplus.onrender.com/",
     type: "Hackathon",
     gradient: "from-green-900/40 to-black",
+    image: "/assets/marche-plus.png.png",
   },
   {
     title: "BioLinK AI",
@@ -137,6 +143,7 @@ const hackathonProjects = [
     linkLabel: "En cours...",
     type: "Hackathon",
     gradient: "from-emerald-900/40 to-black",
+    image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=2070&auto=format&fit=crop",
   },
 ];
 
@@ -150,6 +157,7 @@ type Project = {
   linkLabel?: string;
   type: string;
   gradient: string;
+  image?: string;
 };
 
 // ─── PROJECT CARD ─────────────────────────────────────────────────────────────
@@ -192,9 +200,10 @@ function ProjectCard({ proj }: { proj: Project }) {
       {/* Background */}
       <div
         className={`absolute inset-0 bg-gradient-to-br ${proj.gradient} z-0 group-hover:scale-105 transition-transform duration-1000 ease-out`}
+        style={proj.image ? { backgroundImage: `url(${proj.image})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
       />
       {/* Dark overlay for project background */
-        <div className="absolute inset-0 bg-black/30 z-[2] pointer-events-none" />
+        <div className="absolute inset-0 bg-black/60 bg-gradient-to-t from-black/100 via-black/60 to-transparent group-hover:bg-black/30 transition-colors duration-500 z-[2] pointer-events-none" />
         /* Grid overlay */}
       <div
         className="absolute inset-0 z-[1] opacity-20"

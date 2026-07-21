@@ -1,6 +1,8 @@
 "use client";
+import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaFacebook, FaTiktok, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
+import emailjs from '@emailjs/browser';
 
 const socialLinks = [
   { icon: <FaLinkedin />, href: "https://www.linkedin.com/in/sekou-amara-bamba-460844263", label: "LinkedIn" },
@@ -9,6 +11,36 @@ const socialLinks = [
 ];
 
 export default function Contact() {
+  const form = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!form.current) return;
+
+    setStatus("loading");
+
+    emailjs
+      .sendForm(
+        "service_kng6kio",
+        "template_u8w3d02",
+        form.current,
+        "Qd-XaPGUfPxxMt6j1"
+      )
+      .then(
+        () => {
+          setStatus("success");
+          form.current?.reset();
+          setTimeout(() => setStatus("idle"), 5000);
+        },
+        (error) => {
+          console.error("FAILED...", error.text);
+          setStatus("error");
+          setTimeout(() => setStatus("idle"), 5000);
+        }
+      );
+  };
+
   return (
     <section id="contact" className="min-h-[100dvh] flex items-center justify-center py-32 px-4 relative z-10 bg-background overflow-hidden">
       
@@ -107,11 +139,12 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <form className="glass-panel p-8 md:p-12 rounded-2xl flex flex-col gap-8">
+            <form ref={form} onSubmit={sendEmail} className="glass-panel p-8 md:p-12 rounded-2xl flex flex-col gap-8">
               <div className="relative group">
                 <input 
                   type="text" 
                   id="name" 
+                  name="name"
                   placeholder=" "
                   className="w-full bg-transparent border-b border-white/20 py-4 px-0 text-white font-nunito text-lg focus:outline-none focus:border-primary peer transition-colors"
                   required
@@ -128,6 +161,7 @@ export default function Contact() {
                 <input 
                   type="email" 
                   id="email" 
+                  name="email"
                   placeholder=" "
                   className="w-full bg-transparent border-b border-white/20 py-4 px-0 text-white font-nunito text-lg focus:outline-none focus:border-primary peer transition-colors"
                   required
@@ -143,6 +177,7 @@ export default function Contact() {
               <div className="relative group mt-4">
                 <textarea 
                   id="message" 
+                  name="message"
                   placeholder=" "
                   rows={4}
                   className="w-full bg-transparent border-b border-white/20 py-4 px-0 text-white font-nunito text-lg focus:outline-none focus:border-primary peer transition-colors resize-none"
@@ -157,12 +192,13 @@ export default function Contact() {
               </div>
 
               <button 
-                type="button" 
-                className="mt-8 group relative w-full inline-flex items-center justify-center px-8 py-5 bg-transparent border border-primary text-primary font-bebas text-xl tracking-widest overflow-hidden cursor-none"
+                type="submit" 
+                disabled={status === "loading"}
+                className={`mt-8 group relative w-full inline-flex items-center justify-center px-8 py-5 bg-transparent border ${status === "error" ? "border-red-500 text-red-500" : status === "success" ? "border-green-500 text-green-500" : "border-primary text-primary"} font-bebas text-xl tracking-widest overflow-hidden cursor-none transition-colors duration-300`}
               >
-                <div className="absolute inset-0 w-full h-full bg-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]" />
-                <span className="relative z-10 group-hover:text-background transition-colors duration-500">
-                  ENVOYER LE MESSAGE
+                <div className={`absolute inset-0 w-full h-full ${status === "error" ? "bg-red-500" : status === "success" ? "bg-green-500" : "bg-primary"} transform translate-y-full ${status === "idle" ? "group-hover:translate-y-0" : ""} transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]`} />
+                <span className={`relative z-10 ${status === "idle" ? "group-hover:text-background" : ""} transition-colors duration-500`}>
+                  {status === "loading" ? "ENVOI EN COURS..." : status === "success" ? "MESSAGE ENVOYÉ !" : status === "error" ? "ERREUR. RÉESSAYEZ." : "ENVOYER LE MESSAGE"}
                 </span>
               </button>
             </form>
