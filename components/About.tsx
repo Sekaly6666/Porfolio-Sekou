@@ -4,10 +4,10 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 const stats = [
-  { val: "02", label: "ans d'expérience" },
+  { val: "03", label: "ans d'expérience" },
   { val: "12", label: "projets livrés" },
   { val: "08", label: "projets validés" },
-  { val: "05", label: "technologies clés" }
+  { val: "15", label: "technologies clés (utilisées)" }
 ];
 
 export default function About() {

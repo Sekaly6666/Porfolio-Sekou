@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 import {
   FaReact, FaNodeJs, FaVuejs, FaPython, FaPhp, FaDatabase,
   FaDocker, FaFigma, FaPenNib, FaPaintBrush, FaUserTie,
-  FaFileAlt, FaPalette, FaMobileAlt, FaFileWord, FaFilePowerpoint
+  FaFileAlt, FaPalette, FaMobileAlt, FaFileWord, FaFilePowerpoint,
+  FaHtml5, FaCss3Alt
 } from "react-icons/fa";
 import { SiNextdotjs, SiNestjs, SiTailwindcss, SiTypescript, SiJavascript, SiFlutter, SiMongodb, SiPostgresql, SiMysql, SiBootstrap, SiGithub } from "react-icons/si";
 
@@ -16,6 +17,8 @@ const skillCategories = [
       { name: "Next.js", percentage: 94, icon: <SiNextdotjs /> },
       { name: "React", percentage: 90, icon: <FaReact /> },
       { name: "Vue.js", percentage: 86, icon: <FaVuejs /> },
+      { name: "HTML5", percentage: 95, icon: <FaHtml5 /> },
+      { name: "CSS3", percentage: 92, icon: <FaCss3Alt /> },
     ],
   },
   {

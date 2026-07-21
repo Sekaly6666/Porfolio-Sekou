@@ -248,7 +248,7 @@ function ProjectCard({ proj }: { proj: Project }) {
             ))}
           </div>
 
-          <div className="opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+          <div className="opacity-100 translate-y-0 md:opacity-0 md:translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 mt-4 md:mt-0">
             {isExternal ? (
               <Button href={proj.link} variant="secondary">
                 Explorer →
