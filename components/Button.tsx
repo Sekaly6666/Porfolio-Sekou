@@ -22,6 +22,8 @@ export default function Button({ children, href = '#', variant = 'primary', clas
     <motion.a
       href={href}
       onClick={onClick}
+      target={href.startsWith('http') || href.endsWith('.mp4') ? "_blank" : undefined}
+      rel={href.startsWith('http') || href.endsWith('.mp4') ? "noopener noreferrer" : undefined}
       className={`${baseClasses} ${variantClasses} ${className}`}
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}

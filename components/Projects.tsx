@@ -84,11 +84,10 @@ const collaborativeProjects = [
       { name: "Node.js", icon: <SiNodedotjs /> },
       { name: "JWT", icon: <span className="font-bebas text-xs">JWT</span> },
     ],
-    link: "#",
-    linkLabel: "En cours...",
+    link: "https://my-show-time-xan4.vercel.app/",
     type: "Backend",
     gradient: "from-blue-900/40 to-black",
-    image: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=2070&auto=format&fit=crop",
+    image: "/assets/my-show-time.png",
   },
   {
     title: "Trelltech",
@@ -101,11 +100,11 @@ const collaborativeProjects = [
       { name: "Trello API", icon: <span className="font-bebas text-xs">TR</span> },
       { name: "TypeScript", icon: <SiTypescript /> },
     ],
-    link: "#",
-    linkLabel: "En cours...",
+    link: "/videos/trelltech.mp4",
+    linkLabel: "Voir Démo",
     type: "Mobile",
     gradient: "from-primary/40 to-black",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+    image: "/assets/trelltech.png",
   },
 ];
 
@@ -139,11 +138,11 @@ const hackathonProjects = [
       { name: "MySQL", icon: <SiMysql /> },
       { name: "Firebase", icon: <SiFirebase /> },
     ],
-    link: "#",
-    linkLabel: "En cours...",
+    link: "/videos/biolinkai.mp4",
+    linkLabel: "Voir Démo",
     type: "Hackathon",
     gradient: "from-emerald-900/40 to-black",
-    image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=2070&auto=format&fit=crop",
+    image: "/assets/biolinkai.png",
   },
 ];
 
@@ -220,7 +219,7 @@ function ProjectCard({ proj }: { proj: Project }) {
         style={{ transform: "translateZ(50px)" }}
       >
         <div className="flex justify-between items-start flex-wrap gap-2">
-          <span className="font-nunito text-xs uppercase tracking-widest text-primary px-3 py-1 rounded-full border border-primary/30 backdrop-blur-md">
+          <span className="font-nunito text-xs uppercase tracking-widest text-primary px-3 py-1 rounded-full border border-primary/30 bg-black/40">
             {proj.type}
           </span>
           <span className="font-nunito text-sm text-white/50 text-right max-w-[60%]">
@@ -240,7 +239,7 @@ function ProjectCard({ proj }: { proj: Project }) {
             {proj.tech.map((t, i) => (
               <div
                 key={i}
-                className="flex items-center gap-2 text-white/80 text-sm font-nunito bg-white/5 px-3 py-1.5 rounded-md backdrop-blur-md"
+                className="flex items-center gap-2 text-white/80 text-sm font-nunito bg-white/10 px-3 py-1.5 rounded-md"
               >
                 <span className="text-primary">{t.icon}</span>
                 {t.name}
