@@ -184,7 +184,7 @@ export default function CVPage() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 {[
                   { cat: 'Frontend', tech: 'React, Next.js, Vue.js, HTML/CSS, Tailwind' },
-                  { cat: 'Backend & API', tech: 'Node.js, REST APIs' },
+                  { cat: 'Backend & API', tech: 'Node.js, Nest.js REST APIs' },
                   { cat: 'Mobile', tech: 'React Native' },
                   { cat: 'Langages', tech: 'JavaScript, TypeScript' },
                   { cat: 'Bases de données', tech: 'MySQL, MongoDB' },
@@ -403,7 +403,7 @@ export default function CVPage() {
                 <MainTitle icon={<FaCertificate />}>Certificats</MainTitle>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                   {[
-                    { title: 'Développement Web Mobile', org: 'Université Virtuelle de CI', date: '2024 – 2025' },
+                    { title: 'Développement Web', org: 'Université Virtuelle de CI', date: '2024 – 2025' },
                     { title: 'Microsoft Office Specialist (MOS)', org: 'Certification officielle Microsoft', date: '2024' },
                   ].map((c, i) => (
                     <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px' }}>
