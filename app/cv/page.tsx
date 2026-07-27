@@ -184,7 +184,7 @@ export default function CVPage() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 {[
                   { cat: 'Frontend', tech: 'React, Next.js, Vue.js, HTML/CSS, Tailwind' },
-                  { cat: 'Backend & API', tech: 'Node.js, Nest.js REST APIs' },
+                  { cat: 'Backend & API', tech: 'Node.js, Nest.js, REST APIs' },
                   { cat: 'Mobile', tech: 'React Native' },
                   { cat: 'Langages', tech: 'JavaScript, TypeScript' },
                   { cat: 'Bases de données', tech: 'MySQL, MongoDB' },
