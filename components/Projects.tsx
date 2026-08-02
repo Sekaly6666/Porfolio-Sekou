@@ -68,7 +68,7 @@ const collaborativeProjects = [
       { name: "TMDB API", icon: <span className="font-bebas text-xs">TM</span> },
       { name: "JavaScript", icon: <SiJavascript /> },
     ],
-    link: "https://projet-film-qgen4ocak-seka.vercel.app/",
+    link: "https://projet-film-igayie1ua-seka.vercel.app/",
     type: "Frontend",
     gradient: "from-red-900/40 to-black",
     image: "/assets/rotten-tomatoes.png.png",
