@@ -194,16 +194,16 @@ function ProjectCard({ proj }: { proj: Project }) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className="group hover-magnetic relative w-full h-[520px] md:h-[600px] cursor-none rounded-2xl overflow-hidden"
+      className="group hover-magnetic relative w-full min-h-[500px] h-auto sm:h-[540px] md:h-[600px] rounded-2xl overflow-hidden"
     >
       {/* Background */}
       <div
         className={`absolute inset-0 bg-gradient-to-br ${proj.gradient} z-0 group-hover:scale-105 transition-transform duration-1000 ease-out`}
         style={proj.image ? { backgroundImage: `url(${proj.image})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
       />
-      {/* Dark overlay for project background */
-        <div className="absolute inset-0 bg-black/60 bg-gradient-to-t from-black/100 via-black/60 to-transparent group-hover:bg-black/30 transition-colors duration-500 z-[2] pointer-events-none" />
-        /* Grid overlay */}
+      {/* Dark overlay for project background */}
+      <div className="absolute inset-0 bg-black/60 bg-gradient-to-t from-black/100 via-black/60 to-transparent group-hover:bg-black/30 transition-colors duration-500 z-[2] pointer-events-none" />
+      {/* Grid overlay */}
       <div
         className="absolute inset-0 z-[1] opacity-20"
         style={{
@@ -215,31 +215,31 @@ function ProjectCard({ proj }: { proj: Project }) {
 
       {/* Content */}
       <div
-        className="absolute inset-0 z-10 flex flex-col p-8 md:p-12"
+        className="relative sm:absolute inset-0 z-10 flex flex-col justify-between p-5 sm:p-8 md:p-12 min-h-[500px] sm:min-h-0"
         style={{ transform: "translateZ(50px)" }}
       >
         <div className="flex justify-between items-start flex-wrap gap-2">
-          <span className="font-nunito text-xs uppercase tracking-widest text-primary px-3 py-1 rounded-full border border-primary/30 bg-black/40">
+          <span className="font-nunito text-[11px] sm:text-xs uppercase tracking-widest text-primary px-2.5 py-1 rounded-full border border-primary/30 bg-black/40">
             {proj.type}
           </span>
-          <span className="font-nunito text-sm text-white/50 text-right max-w-[60%]">
+          <span className="font-nunito text-xs sm:text-sm text-white/50 text-right max-w-[70%]">
             {proj.role}
           </span>
         </div>
 
-        <div className="mt-auto">
-          <h3 className="text-4xl md:text-5xl font-bebas text-white mb-4 tracking-wide group-hover:text-primary transition-colors duration-500">
+        <div className="mt-6 sm:mt-auto">
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-bebas text-white mb-2 sm:mb-4 tracking-wide group-hover:text-primary transition-colors duration-500">
             {proj.title}
           </h3>
-          <p className="text-white/60 font-nunito font-light leading-relaxed mb-8 max-w-md line-clamp-4">
+          <p className="text-white/60 font-nunito font-light leading-relaxed mb-4 sm:mb-6 max-w-md line-clamp-3 sm:line-clamp-4 text-sm sm:text-base">
             {proj.description}
           </p>
 
-          <div className="flex flex-wrap gap-3 mb-8">
+          <div className="flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8">
             {proj.tech.map((t, i) => (
               <div
                 key={i}
-                className="flex items-center gap-2 text-white/80 text-sm font-nunito bg-white/10 px-3 py-1.5 rounded-md"
+                className="flex items-center gap-1.5 sm:gap-2 text-white/80 text-xs sm:text-sm font-nunito bg-white/10 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-md"
               >
                 <span className="text-primary">{t.icon}</span>
                 {t.name}
@@ -247,7 +247,7 @@ function ProjectCard({ proj }: { proj: Project }) {
             ))}
           </div>
 
-          <div className="opacity-100 translate-y-0 md:opacity-0 md:translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 mt-4 md:mt-0">
+          <div className="opacity-100 translate-y-0 md:opacity-0 md:translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 mt-2 sm:mt-4 md:mt-0">
             {isExternal ? (
               <Button href={proj.link} variant="secondary">
                 Explorer →
@@ -272,10 +272,10 @@ function SectionLabel({ label, index }: { label: string; index: number }) {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="flex items-center gap-4 mb-10 md:mb-14"
+      className="flex items-center gap-3 sm:gap-4 mb-8 sm:mb-12"
     >
-      <span className="w-8 h-px bg-primary/60" />
-      <h3 className="font-bebas text-xl md:text-2xl tracking-[0.2em] text-white/40 uppercase">
+      <span className="w-6 sm:w-8 h-px bg-primary/60" />
+      <h3 className="font-bebas text-lg sm:text-xl md:text-2xl tracking-[0.2em] text-white/40 uppercase">
         {label}
       </h3>
       <span className="flex-1 h-px bg-white/5" />
@@ -294,9 +294,9 @@ function ProjectGroup({
   groupIndex: number;
 }) {
   return (
-    <div className="mb-24 md:mb-40">
+    <div className="mb-16 sm:mb-24 md:mb-36">
       <SectionLabel label={label} index={groupIndex} />
-      <div className="flex flex-col gap-12 md:gap-24" style={{ perspective: "1000px" }}>
+      <div className="flex flex-col gap-8 sm:gap-14 md:gap-20" style={{ perspective: "1000px" }}>
         {projects.map((proj, idx) => (
           <motion.div
             key={proj.title}
@@ -318,7 +318,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="min-h-[100dvh] flex flex-col justify-center py-32 px-4 relative z-10 bg-background overflow-hidden"
+      className="min-h-[100dvh] flex flex-col justify-center py-20 sm:py-32 px-4 sm:px-6 relative z-10 bg-background overflow-hidden"
     >
       <div className="w-full max-w-7xl mx-auto">
         {/* Header */}
@@ -327,17 +327,17 @@ export default function Projects() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="mb-16 md:mb-28"
+          className="mb-12 sm:mb-16 md:mb-24"
         >
-          <span className="font-bebas text-2xl md:text-4xl text-white/10 tracking-[0.2em] mb-4 block">
+          <span className="font-bebas text-xl sm:text-2xl md:text-4xl text-white/10 tracking-[0.2em] mb-3 block">
             03 — TRAVAUX
           </span>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-white/5 pb-12">
-            <h2 className="text-5xl md:text-7xl font-bebas text-white tracking-wide uppercase leading-none">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 border-b border-white/5 pb-8 sm:pb-12">
+            <h2 className="text-4xl sm:text-6xl md:text-7xl font-bebas text-white tracking-wide uppercase leading-none">
               Mes <span className="text-primary">Projets</span>.
             </h2>
-            <p className="text-white/50 font-nunito max-w-md text-lg font-light">
-              Une sélection de mes meilleures réalisations. Survolez pour explorer.
+            <p className="text-white/50 font-nunito max-w-md text-base sm:text-lg font-light">
+              Une sélection de mes meilleures réalisations. Survolez ou touchez pour explorer.
             </p>
           </div>
         </motion.div>

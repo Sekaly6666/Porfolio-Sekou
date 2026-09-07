@@ -1,48 +1,57 @@
 "use client";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const stats = [
   { val: "03", label: "ans d'expérience" },
   { val: "12", label: "projets livrés" },
   { val: "08", label: "projets validés" },
-  { val: "15", label: "technologies clés (utilisées)" }
+  { val: "15", label: "technologies clés" }
 ];
 
 export default function About() {
   const ref = useRef(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= 1024);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [-100, 100]);
+  const y1 = useTransform(scrollYProgress, [0, 1], [80, -80]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [-80, 80]);
 
   return (
-    <section ref={ref} id="about" className="min-h-[100dvh] flex items-center justify-center py-32 px-4 relative z-10 bg-background overflow-hidden">
+    <section ref={ref} id="about" className="min-h-[100dvh] flex items-center justify-center py-20 sm:py-32 px-4 sm:px-6 relative z-10 bg-background overflow-hidden">
       <div className="w-full max-w-7xl mx-auto relative">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="mb-16 md:mb-32"
+          className="mb-12 md:mb-24"
         >
-          <span className="font-bebas text-2xl md:text-4xl text-white/10 tracking-[0.2em]">01 — À PROPOS</span>
-          <h2 className="text-5xl md:text-7xl lg:text-[7rem] font-bebas text-white mt-4 tracking-wide uppercase leading-[0.85]">
+          <span className="font-bebas text-xl sm:text-2xl md:text-4xl text-white/10 tracking-[0.2em]">01 — À PROPOS</span>
+          <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-[7rem] font-bebas text-white mt-4 tracking-wide uppercase leading-[0.9]">
             Je conçois.<br/>
             <span className="text-primary">Je développe.</span><br/>
             Je déploie.
           </h2>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row items-start gap-16 lg:gap-24 relative">
-          {/* Parallax Image */}
+        <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-24 relative">
+          {/* Parallax Image (desktop only parallax to avoid collisions on mobile) */}
           <motion.div 
-            className="w-full lg:w-5/12 relative"
-            style={{ y: y1 }}
+            className="w-full lg:w-5/12 relative max-w-md mx-auto lg:max-w-none"
+            style={{ y: isDesktop ? y1 : 0 }}
           >
             <div className="relative aspect-[3/4] w-full rounded-sm overflow-hidden group">
               <div className="absolute inset-0 bg-primary/20 mix-blend-overlay z-10 transition-opacity duration-700 group-hover:opacity-0" />
@@ -58,7 +67,7 @@ export default function About() {
           
           <motion.div 
             className="w-full lg:w-7/12"
-            style={{ y: y2 }}
+            style={{ y: isDesktop ? y2 : 0 }}
           >
             <div className="h-px w-full bg-white/5 mb-12 relative overflow-hidden">
               <motion.div 

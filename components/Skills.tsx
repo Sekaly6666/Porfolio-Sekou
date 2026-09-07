@@ -62,7 +62,7 @@ const skillCategories = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="min-h-[100dvh] flex flex-col justify-center py-32 px-4 relative z-10 bg-background overflow-hidden">
+    <section id="skills" className="min-h-[100dvh] flex flex-col justify-center py-20 sm:py-32 px-4 sm:px-6 relative z-10 bg-background overflow-hidden">
       <div className="w-full max-w-7xl mx-auto relative z-10">
         
         <motion.div
@@ -70,22 +70,22 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="mb-24"
+          className="mb-14 sm:mb-20"
         >
-          <span className="font-bebas text-2xl md:text-4xl text-white/10 tracking-[0.2em] mb-4 block">02 — COMPÉTENCES</span>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-white/5 pb-12">
-            <h2 className="text-5xl md:text-7xl font-bebas text-white tracking-wide uppercase leading-none">
+          <span className="font-bebas text-xl sm:text-2xl md:text-4xl text-white/10 tracking-[0.2em] mb-3 block">02 — COMPÉTENCES</span>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 border-b border-white/5 pb-8 sm:pb-12">
+            <h2 className="text-4xl sm:text-6xl md:text-7xl font-bebas text-white tracking-wide uppercase leading-none">
               Mon <span className="text-primary">Arsenal</span>.
             </h2>
-            <p className="text-white/50 font-nunito max-w-md text-lg font-light">
+            <p className="text-white/50 font-nunito max-w-md text-base sm:text-lg font-light">
               Une maîtrise technique pointue, du front-end fluide à l'architecture back-end robuste.
             </p>
           </div>
         </motion.div>
 
-        <div className="flex flex-col gap-24">
+        <div className="flex flex-col gap-14 sm:gap-20">
           {skillCategories.map((section, idx) => (
-            <div key={idx} className="flex flex-col md:flex-row gap-8 md:gap-16">
+            <div key={idx} className="flex flex-col md:flex-row gap-6 md:gap-16">
               <motion.div 
                 className="w-full md:w-1/4"
                 initial={{ opacity: 0, x: -50 }}
@@ -93,7 +93,7 @@ export default function Skills() {
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                <h3 className="text-2xl font-bebas text-white/80 tracking-widest uppercase sticky top-32">
+                <h3 className="text-xl sm:text-2xl font-bebas text-white/80 tracking-widest uppercase md:sticky md:top-32">
                   {section.category}
                 </h3>
               </motion.div>

@@ -3,9 +3,8 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { useRef, useMemo } from "react";
 import * as THREE from "three";
 
-function Particles({ count = 1000 }) {
+function Particles({ count = 500 }) {
   const mesh = useRef<THREE.InstancedMesh>(null!);
-  
   const dummy = useMemo(() => new THREE.Object3D(), []);
   
   const particles = useMemo(() => {
@@ -22,7 +21,8 @@ function Particles({ count = 1000 }) {
     return temp;
   }, [count]);
 
-  useFrame((state) => {
+  useFrame(() => {
+    if (!mesh.current) return;
     particles.forEach((particle, i) => {
       let { t, factor, speed, xFactor, yFactor, zFactor } = particle;
       t = particle.t += speed / 2;
@@ -55,7 +55,7 @@ function Particles({ count = 1000 }) {
 export default function SceneBackground() {
   return (
     <div className="fixed inset-0 z-0 pointer-events-none w-full h-full">
-      <Canvas camera={{ position: [0, 0, 15], fov: 75 }}>
+      <Canvas camera={{ position: [0, 0, 15], fov: 75 }} gl={{ alpha: true }}>
         <ambientLight intensity={0.5} />
         <Particles count={500} />
       </Canvas>

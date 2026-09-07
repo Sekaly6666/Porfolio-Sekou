@@ -1,11 +1,12 @@
 "use client";
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { QRCodeSVG } from 'qrcode.react';
 import {
   FaPhoneAlt, FaEnvelope, FaGlobe, FaMapMarkerAlt,
   FaGraduationCap, FaBriefcase, FaCode, FaCertificate,
-  FaUserAlt
+  FaUserAlt, FaArrowLeft, FaPrint
 } from 'react-icons/fa';
 
 const GOLD = '#D4AF37';
@@ -100,15 +101,29 @@ export default function CVPage() {
 
       <div
         id="cv-root"
-        style={{
-          minHeight: '100vh',
-          background: '#e5e7eb',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'flex-start',
-          padding: '32px',
-        }}
+        className="min-h-screen bg-gray-200 flex flex-col items-center justify-start p-2 sm:p-8 pt-20 sm:pt-24 relative overflow-x-auto w-full"
       >
+        {/* ══════════ TOP NAV BAR FOR SCREEN ══════════ */}
+        <div className="print-hidden fixed top-3 left-3 sm:top-6 sm:left-6 z-50 flex items-center gap-2 sm:gap-3 flex-wrap">
+          <Link
+            href="/"
+            className="flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-black/85 text-white hover:text-primary border border-white/15 hover:border-primary backdrop-blur-md transition-all shadow-lg text-xs sm:text-sm font-nunito"
+          >
+            <FaArrowLeft className="text-[10px] sm:text-xs" /> Retour au portfolio
+          </Link>
+          <Link
+            href="/ldm"
+            className="flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-black/85 text-white hover:text-primary border border-white/15 hover:border-primary backdrop-blur-md transition-all shadow-lg text-xs sm:text-sm font-nunito"
+          >
+            Voir la LDM
+          </Link>
+        </div>
+
+        {/* Mobile scroll hint */}
+        <div className="print-hidden block sm:hidden text-center text-[11px] font-nunito text-gray-600 bg-white/70 backdrop-blur-sm px-3 py-1 rounded-full mb-3 shadow-sm border border-black/5">
+          ↔ Glissez pour explorer le format A4 imprimable
+        </div>
+
         {/* ══════════ A4 CONTAINER ══════════ */}
         <div
           id="cv-a4"
@@ -122,6 +137,7 @@ export default function CVPage() {
             boxShadow: '0 20px 50px rgba(0,0,0,0.15)',
             position: 'relative',
             fontFamily: "'Nunito', sans-serif",
+            flexShrink: 0,
           }}
         >
 
@@ -385,8 +401,8 @@ export default function CVPage() {
                 <MainTitle icon={<FaGraduationCap />}>Formation Académique</MainTitle>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                   {[
-                    { title: 'Formation Full Stack', org: 'WeCode (Epitech), Abidjan', date: '2026 (6 mois)' },
-                    { title: 'Licence en DAS', org: 'Université Virtuelle de Côte d\'Ivoire', date: '2024 – 2025' },
+                    { title: 'Formation Full Stack (Certificat)', org: 'WeCode (Epitech), Abidjan', date: '2026 (6 mois)' },
+                    { title: 'Licence en DAS (Diplômé)', org: 'Université Virtuelle de Côte d\'Ivoire', date: '2024 – 2025' },
                   ].map((f, i) => (
                     <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px' }}>
                       <h4 style={{ fontWeight: 800, fontSize: '12.5px', color: DARK, flex: 1, lineHeight: 1.5 }}>
@@ -421,12 +437,12 @@ export default function CVPage() {
           </div>
         </div>
 
-        {/* ══════════ FLOATING PRINT BUTTON ══════════ */}
+        {/* ══════════ FLOATING ACTION CONTROLS (SCREEN ONLY) ══════════ */}
         <button
           onClick={() => window.print()}
-          className="print-hidden fixed bottom-8 right-8 bg-primary text-black px-6 py-3 rounded-full font-bebas text-xl tracking-widest hover:bg-white hover:scale-105 transition-all shadow-xl z-50 flex items-center gap-2"
+          className="print-hidden fixed bottom-8 right-8 bg-primary text-black px-6 py-3 rounded-full font-bebas text-xl tracking-widest hover:bg-white hover:scale-105 transition-all shadow-2xl z-50 flex items-center gap-2"
         >
-          <FaUserAlt className="text-sm" /> IMPRIMER CV
+          <FaPrint className="text-base" /> IMPRIMER / PDF CV
         </button>
       </div>
     </>

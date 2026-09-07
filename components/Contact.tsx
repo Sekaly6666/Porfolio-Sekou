@@ -42,12 +42,12 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="min-h-[100dvh] flex items-center justify-center py-32 px-4 relative z-10 bg-background overflow-hidden">
+    <section id="contact" className="min-h-[100dvh] flex items-center justify-center py-20 sm:py-32 px-4 sm:px-6 relative z-10 bg-background overflow-hidden">
       
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] mix-blend-screen" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-white/5 rounded-full blur-[100px] mix-blend-screen" />
+        <div className="absolute top-1/4 left-1/4 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-primary/5 rounded-full blur-[100px] sm:blur-[120px] mix-blend-screen" />
+        <div className="absolute bottom-1/4 right-1/4 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-white/5 rounded-full blur-[80px] sm:blur-[100px] mix-blend-screen" />
       </div>
 
       <div className="w-full max-w-7xl mx-auto relative z-10">
@@ -56,15 +56,15 @@ export default function Contact() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mb-20 md:mb-32"
+          className="mb-12 sm:mb-20 md:mb-28"
         >
-          <span className="font-bebas text-2xl md:text-4xl text-white/10 tracking-[0.2em]">05 — CONTACT</span>
-          <h2 className="text-5xl md:text-7xl lg:text-[7rem] font-bebas text-white mt-4 tracking-wide uppercase leading-none">
+          <span className="font-bebas text-xl sm:text-2xl md:text-4xl text-white/10 tracking-[0.2em]">05 — CONTACT</span>
+          <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-[7rem] font-bebas text-white mt-3 sm:mt-4 tracking-wide uppercase leading-none">
             Let's <span className="text-primary">Talk</span>
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-24">
           
           {/* Left Column: Info & Socials */}
           <motion.div 
@@ -75,54 +75,56 @@ export default function Contact() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div>
-              <p className="text-white/60 font-nunito text-xl md:text-2xl font-light leading-relaxed mb-12">
+              <p className="text-white/60 font-nunito text-lg sm:text-xl md:text-2xl font-light leading-relaxed mb-8 sm:mb-12">
                 Vous avez un projet innovant, une opportunité ou vous souhaitez simplement échanger ? 
                 N'hésitez pas à me contacter.
               </p>
 
-              <div className="space-y-8 mb-16">
-                <a href="mailto:sekouamarabamba@gmail.com" className="group flex items-center gap-6 cursor-none">
-                  <div className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center group-hover:border-primary group-hover:bg-primary/10 transition-all duration-500">
-                    <FaEnvelope className="text-white/50 text-xl group-hover:text-primary transition-colors duration-500" />
+              <div className="space-y-6 sm:space-y-8 mb-10 sm:mb-16">
+                <a href="mailto:sekouamarabamba@gmail.com" className="group flex items-center gap-4 sm:gap-6">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white/10 flex-shrink-0 flex items-center justify-center group-hover:border-primary group-hover:bg-primary/10 transition-all duration-500">
+                    <FaEnvelope className="text-white/50 text-lg sm:text-xl group-hover:text-primary transition-colors duration-500" />
                   </div>
-                  <div>
-                    <span className="block font-nunito text-xs text-white/40 uppercase tracking-widest mb-1">Email</span>
-                    <span className="block font-nunito text-lg text-white group-hover:text-primary transition-colors duration-300">sekouamarabamba@gmail.com</span>
+                  <div className="min-w-0">
+                    <span className="block font-nunito text-xs text-white/40 uppercase tracking-widest mb-0.5 sm:mb-1">Email</span>
+                    <span className="block font-nunito text-sm sm:text-lg text-white group-hover:text-primary transition-colors duration-300 break-all sm:break-normal">
+                      sekouamarabamba@gmail.com
+                    </span>
                   </div>
                 </a>
 
-                <div className="group flex items-center gap-6">
-                  <div className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center group-hover:border-primary group-hover:bg-primary/10 transition-all duration-500">
-                    <FaPhoneAlt className="text-white/50 text-xl group-hover:text-primary transition-colors duration-500" />
+                <div className="group flex items-center gap-4 sm:gap-6">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white/10 flex-shrink-0 flex items-center justify-center group-hover:border-primary group-hover:bg-primary/10 transition-all duration-500">
+                    <FaPhoneAlt className="text-white/50 text-lg sm:text-xl group-hover:text-primary transition-colors duration-500" />
                   </div>
                   <div>
-                    <span className="block font-nunito text-xs text-white/40 uppercase tracking-widest mb-1">Téléphone</span>
-                    <span className="block font-nunito text-lg text-white">05 66 66 80 39 / 07 48 27 25 82</span>
+                    <span className="block font-nunito text-xs text-white/40 uppercase tracking-widest mb-0.5 sm:mb-1">Téléphone</span>
+                    <span className="block font-nunito text-sm sm:text-lg text-white">05 66 66 80 39 / 07 48 27 25 82</span>
                   </div>
                 </div>
 
-                <div className="group flex items-center gap-6">
-                  <div className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center group-hover:border-primary group-hover:bg-primary/10 transition-all duration-500">
-                    <FaMapMarkerAlt className="text-white/50 text-xl group-hover:text-primary transition-colors duration-500" />
+                <div className="group flex items-center gap-4 sm:gap-6">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white/10 flex-shrink-0 flex items-center justify-center group-hover:border-primary group-hover:bg-primary/10 transition-all duration-500">
+                    <FaMapMarkerAlt className="text-white/50 text-lg sm:text-xl group-hover:text-primary transition-colors duration-500" />
                   </div>
                   <div>
-                    <span className="block font-nunito text-xs text-white/40 uppercase tracking-widest mb-1">Localisation</span>
-                    <span className="block font-nunito text-lg text-white">Abidjan, Koumassi</span>
+                    <span className="block font-nunito text-xs text-white/40 uppercase tracking-widest mb-0.5 sm:mb-1">Localisation</span>
+                    <span className="block font-nunito text-sm sm:text-lg text-white">Abidjan, Koumassi</span>
                   </div>
                 </div>
               </div>
             </div>
 
             <div>
-              <p className="font-nunito text-xs text-white/40 uppercase tracking-widest mb-6">Réseaux Sociaux</p>
-              <div className="flex gap-4">
+              <p className="font-nunito text-xs text-white/40 uppercase tracking-widest mb-4 sm:mb-6">Réseaux Sociaux</p>
+              <div className="flex gap-3 sm:gap-4">
                 {socialLinks.map((link, idx) => (
                   <a 
                     key={idx} 
                     href={link.href} 
                     target="_blank" 
                     rel="noreferrer"
-                    className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-primary hover:border-primary hover:bg-primary/10 transition-all duration-300 cursor-none"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-primary hover:border-primary hover:bg-primary/10 transition-all duration-300"
                     aria-label={link.label}
                   >
                     {link.icon}
@@ -139,19 +141,19 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <form ref={form} onSubmit={sendEmail} className="glass-panel p-8 md:p-12 rounded-2xl flex flex-col gap-8">
+            <form ref={form} onSubmit={sendEmail} className="glass-panel p-6 sm:p-8 md:p-12 rounded-2xl flex flex-col gap-6 sm:gap-8">
               <div className="relative group">
                 <input 
                   type="text" 
                   id="name" 
                   name="name"
                   placeholder=" "
-                  className="w-full bg-transparent border-b border-white/20 py-4 px-0 text-white font-nunito text-lg focus:outline-none focus:border-primary peer transition-colors"
+                  className="w-full bg-transparent border-b border-white/20 py-3 sm:py-4 px-0 text-white font-nunito text-base sm:text-lg focus:outline-none focus:border-primary peer transition-colors"
                   required
                 />
                 <label 
                   htmlFor="name" 
-                  className="absolute left-0 top-4 text-white/40 font-nunito text-lg transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-white/40 peer-valid:uppercase peer-valid:tracking-widest cursor-text"
+                  className="absolute left-0 top-3 sm:top-4 text-white/40 font-nunito text-base sm:text-lg transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-white/40 peer-valid:uppercase peer-valid:tracking-widest cursor-text"
                 >
                   Votre Nom
                 </label>
@@ -163,29 +165,29 @@ export default function Contact() {
                   id="email" 
                   name="email"
                   placeholder=" "
-                  className="w-full bg-transparent border-b border-white/20 py-4 px-0 text-white font-nunito text-lg focus:outline-none focus:border-primary peer transition-colors"
+                  className="w-full bg-transparent border-b border-white/20 py-3 sm:py-4 px-0 text-white font-nunito text-base sm:text-lg focus:outline-none focus:border-primary peer transition-colors"
                   required
                 />
                 <label 
                   htmlFor="email" 
-                  className="absolute left-0 top-4 text-white/40 font-nunito text-lg transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-white/40 peer-valid:uppercase peer-valid:tracking-widest cursor-text"
+                  className="absolute left-0 top-3 sm:top-4 text-white/40 font-nunito text-base sm:text-lg transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-white/40 peer-valid:uppercase peer-valid:tracking-widest cursor-text"
                 >
                   Votre Email
                 </label>
               </div>
 
-              <div className="relative group mt-4">
+              <div className="relative group mt-2 sm:mt-4">
                 <textarea 
                   id="message" 
                   name="message"
                   placeholder=" "
                   rows={4}
-                  className="w-full bg-transparent border-b border-white/20 py-4 px-0 text-white font-nunito text-lg focus:outline-none focus:border-primary peer transition-colors resize-none"
+                  className="w-full bg-transparent border-b border-white/20 py-3 sm:py-4 px-0 text-white font-nunito text-base sm:text-lg focus:outline-none focus:border-primary peer transition-colors resize-none"
                   required
                 ></textarea>
                 <label 
                   htmlFor="message" 
-                  className="absolute left-0 top-4 text-white/40 font-nunito text-lg transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-white/40 peer-valid:uppercase peer-valid:tracking-widest cursor-text"
+                  className="absolute left-0 top-3 sm:top-4 text-white/40 font-nunito text-base sm:text-lg transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-white/40 peer-valid:uppercase peer-valid:tracking-widest cursor-text"
                 >
                   Votre Message
                 </label>
@@ -194,7 +196,7 @@ export default function Contact() {
               <button 
                 type="submit" 
                 disabled={status === "loading"}
-                className={`mt-8 group relative w-full inline-flex items-center justify-center px-8 py-5 bg-transparent border ${status === "error" ? "border-red-500 text-red-500" : status === "success" ? "border-green-500 text-green-500" : "border-primary text-primary"} font-bebas text-xl tracking-widest overflow-hidden cursor-none transition-colors duration-300`}
+                className={`mt-4 sm:mt-8 group relative w-full inline-flex items-center justify-center px-6 py-4 sm:px-8 sm:py-5 bg-transparent border ${status === "error" ? "border-red-500 text-red-500" : status === "success" ? "border-green-500 text-green-500" : "border-primary text-primary"} font-bebas text-lg sm:text-xl tracking-widest overflow-hidden transition-colors duration-300 active:scale-98`}
               >
                 <div className={`absolute inset-0 w-full h-full ${status === "error" ? "bg-red-500" : status === "success" ? "bg-green-500" : "bg-primary"} transform translate-y-full ${status === "idle" ? "group-hover:translate-y-0" : ""} transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]`} />
                 <span className={`relative z-10 ${status === "idle" ? "group-hover:text-background" : ""} transition-colors duration-500`}>
@@ -208,8 +210,8 @@ export default function Contact() {
       </div>
       
       {/* Decorative background text */}
-      <div className="pointer-events-none absolute bottom-0 inset-x-0 z-0 flex select-none justify-center opacity-[0.03] overflow-hidden translate-y-1/3">
-        <span className="font-bebas text-[30vw] tracking-tighter text-white leading-none">BSA</span>
+      <div className="contact-bsa-watermark pointer-events-none absolute inset-0 z-0 flex select-none items-center justify-center overflow-hidden">
+        <span className="font-bebas text-[30vw] tracking-tighter text-white leading-none select-none">BSA</span>
       </div>
     </section>
   );
