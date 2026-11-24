@@ -1,11 +1,16 @@
 "use client";
 
-import { usePathname } from 'next/navigation';
+import dynamic from "next/dynamic";
+import { usePathname } from "next/navigation";
 import Header from "./Header";
 import CustomCursor from "./ui/CustomCursor";
 import FloatingControls from "./ui/FloatingControls";
-import SceneBackground from "./3d/SceneBackground";
 import { ThemeProvider } from "./providers/ThemeProvider";
+
+const SceneBackground = dynamic(() => import("./3d/SceneBackground"), {
+  ssr: false,
+  loading: () => null,
+});
 
 export default function LayoutClient({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();

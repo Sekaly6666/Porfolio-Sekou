@@ -22,10 +22,10 @@ export default function Contact() {
 
     emailjs
       .sendForm(
-        "service_kng6kio",
-        "template_u8w3d02",
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_kng6kio",
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_u8w3d02",
         form.current,
-        "Qd-XaPGUfPxxMt6j1"
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "Qd-XaPGUfPxxMt6j1"
       )
       .then(
         () => {
@@ -58,7 +58,7 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
           className="mb-12 sm:mb-20 md:mb-28"
         >
-          <span className="font-bebas text-xl sm:text-2xl md:text-4xl text-white/10 tracking-[0.2em]">05 — CONTACT</span>
+          <span className="font-bebas text-xl sm:text-2xl md:text-4xl text-white/10 tracking-[0.2em]">06 — CONTACT</span>
           <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-[7rem] font-bebas text-white mt-3 sm:mt-4 tracking-wide uppercase leading-none">
             Let's <span className="text-primary">Talk</span>
           </h2>

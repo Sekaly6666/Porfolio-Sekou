@@ -2,16 +2,27 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const LOAD_DURATION = 1200; // ms pour atteindre 100%
-const INTRO_DURATION = 1800; // ms de l'intro cinématique
+const LOAD_DURATION = 650; // ms pour atteindre 100%
+const INTRO_DURATION = 950; // ms de l'intro cinématique
 
 export default function Loader() {
   const [progress, setProgress] = useState(0);
-  const [phase, setPhase] = useState<"loading" | "intro" | "done">("loading");
+  const [phase, setPhase] = useState<"idle" | "loading" | "intro" | "done">("idle");
   const startTimeRef = useRef<number | null>(null);
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
+    try {
+      if (sessionStorage.getItem("bsa-loader-seen") === "1") {
+        setPhase("done");
+        return;
+      }
+    } catch {
+      // sessionStorage unavailable
+    }
+
+    setPhase("loading");
+
     // Progression basée sur le temps — 100% lisse garanti
     const animate = (timestamp: number) => {
       if (startTimeRef.current === null) startTimeRef.current = timestamp;
@@ -27,7 +38,7 @@ export default function Loader() {
         rafRef.current = requestAnimationFrame(animate);
       } else {
         // Chargement terminé → passer à l'intro
-        setTimeout(() => setPhase("intro"), 150);
+        setTimeout(() => setPhase("intro"), 80);
       }
     };
 
@@ -39,18 +50,25 @@ export default function Loader() {
 
   useEffect(() => {
     if (phase === "intro") {
-      const timer = setTimeout(() => setPhase("done"), INTRO_DURATION);
+      const timer = setTimeout(() => {
+        try {
+          sessionStorage.setItem("bsa-loader-seen", "1");
+        } catch {
+          // ignore
+        }
+        setPhase("done");
+      }, INTRO_DURATION);
       return () => clearTimeout(timer);
     }
   }, [phase]);
 
   return (
     <AnimatePresence>
-      {phase !== "done" && (
+      {(phase === "loading" || phase === "intro") && (
         <motion.div
           className="fixed inset-0 z-[100] flex select-none items-center justify-center bg-background overflow-hidden"
-          exit={{ opacity: 0, filter: "blur(20px)" }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
         >
           {/* Phase 1: Loading Counter */}
           <AnimatePresence>

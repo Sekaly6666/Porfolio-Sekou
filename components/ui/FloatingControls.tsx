@@ -19,7 +19,7 @@ export default function FloatingControls() {
   useEffect(() => {
     const audio = new Audio("/assets/ambient-lofi.mp3");
     audio.loop = true;
-    audio.preload = "auto";
+    audio.preload = "none";
     audio.volume = 0;
     audioRef.current = audio;
 
@@ -80,10 +80,10 @@ export default function FloatingControls() {
 
   return (
     <motion.div
-      className="fixed bottom-4 right-3 sm:bottom-8 sm:right-8 xl:right-16 z-40 flex items-center gap-2 sm:gap-3.5"
-      initial={{ opacity: 0, y: 20 }}
+      className="floating-controls fixed bottom-4 right-3 sm:bottom-8 sm:right-8 xl:right-16 z-40 flex items-center gap-2 sm:gap-3.5"
+      initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 1.5, duration: 0.6 }}
+      transition={{ delay: 0.3, duration: 0.45 }}
     >
       {/* 1. BOUTON MUSIQUE (SON) */}
       <motion.button

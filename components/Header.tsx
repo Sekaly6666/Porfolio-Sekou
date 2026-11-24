@@ -125,16 +125,16 @@ export default function Header() {
       {/* ── DESKTOP RIGHT SIDE NAVIGATION (hidden on < md) ── */}
       <motion.nav
         className="hidden md:flex fixed right-4 top-1/2 -translate-y-1/2 z-30 flex-col justify-center gap-6 sm:right-8 xl:right-16"
-        initial={{ opacity: 0, x: 50 }}
+        initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1.6, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ delay: 0.25, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
         {links.map((l, i) => (
           <motion.div
             key={l.href}
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 15 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1.6 + i * 0.1, duration: 0.5 }}
+            transition={{ delay: 0.25 + i * 0.05, duration: 0.35 }}
           >
             <Link
               href={l.href}
@@ -152,9 +152,9 @@ export default function Header() {
       {/* ── DESKTOP LEFT SIDE SOCIALS (hidden on < md) ── */}
       <motion.div
         className="hidden md:flex fixed bottom-8 left-4 z-30 flex-col gap-5 sm:left-8 xl:left-16"
-        initial={{ opacity: 0, x: -50 }}
+        initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1.8, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ delay: 0.35, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
         {socials.map((s, i) => (
           <Link

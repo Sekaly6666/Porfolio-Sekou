@@ -4,9 +4,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { QRCodeSVG } from 'qrcode.react';
 import {
-  FaPhoneAlt, FaEnvelope, FaGlobe, FaMapMarkerAlt,
+  FaPhoneAlt, FaEnvelope, FaMapMarkerAlt,
   FaGraduationCap, FaBriefcase, FaCode, FaCertificate,
-  FaUserAlt, FaArrowLeft, FaPrint
+  FaArrowLeft, FaPrint
 } from 'react-icons/fa';
 
 const GOLD = '#D4AF37';
@@ -168,9 +168,9 @@ export default function CVPage() {
                   <Image
                     src="/assets/photo-bamba-sekou-amara-pro.jpg"
                     alt="Bamba Sekou Amara"
-                    layout="fill"
-                    objectFit="cover"
-                    objectPosition="center 15%"
+                    fill
+                    sizes="115px"
+                    className="object-cover object-[center_15%]"
                   />
                 </div>
               </div>
@@ -301,12 +301,12 @@ export default function CVPage() {
             {/* PROFIL */}
             <div>
               <p style={{
-                fontSize: '13px',
-                lineHeight: 1.85,
+                fontSize: '12.5px',
+                lineHeight: 1.7,
                 color: TEXT_DARK,
                 textAlign: 'justify',
               }}>
-                Passionné par le développement web et mobile, je possède de solides bases en création d'interfaces dynamiques et performantes. Rigoureux et doté d'une forte curiosité technique, je recherche une opportunité pour mettre en pratique mes compétences, collaborer avec des équipes expérimentées et contribuer activement à des projets innovants.
+                <strong style={{ color: DARK }}>Diplômé d&apos;une Licence en Développement d&apos;Applications et Services (UVCI) et formé en développement Full Stack à WeCode (Epitech)</strong>, je conçois des applications web et mobiles performantes avec <strong style={{ color: DARK }}>React, Next.js, React Native, Node.js et NestJS</strong>. Rigoureux et orienté solutions, je recherche <strong style={{ color: DARK }}>une opportunité (stage ou premier poste) de Développeur Full Stack</strong> afin de contribuer à des projets concrets et monter en expertise au sein d&apos;une équipe technique.
               </p>
             </div>
 
@@ -319,7 +319,7 @@ export default function CVPage() {
                     role: 'Agent Identificateur',
                     company: 'Anstat',
                     loc: 'Abidjan',
-                    date: 'Fév. 2025 – Mai 2025',
+                    date: 'Fév. 2025 – Juin 2025 (5 mois)',
                     items: [
                       "Identification et enrôlement des entrepreneurs de Côte d'Ivoire.",
                       "Collecte, vérification des données d'identité sur le terrain et gestion numérisée."
@@ -329,7 +329,7 @@ export default function CVPage() {
                     role: 'Agent Terrain – Recrutement Marchand',
                     company: 'Orange',
                     loc: 'Abidjan',
-                    date: 'Oct. 2025 – Nov. 2025',
+                    date: 'Oct. 2025 – Nov. 2025 (2 mois)',
                     items: [
                       'Prospection et recrutement de marchands pour le réseau Orange.',
                       'Accompagnement, sensibilisation aux services Orange Money et fidélisation client.'

@@ -1,6 +1,7 @@
 "use client";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import React, { useRef } from "react";
+import Image from "next/image";
 import Button from "./Button";
 import {
   SiNestjs,
@@ -17,10 +18,27 @@ import {
   SiPython,
   SiTailwindcss,
   SiFramer,
+  SiVite,
 } from "react-icons/si";
 
 // ─── PROJETS PERSONNELS ───────────────────────────────────────────────────────
 const personalProjects = [
+  {
+    title: "Onoot Boutique",
+    description:
+      "Plateforme e-commerce dédiée aux accessoires High-Tech, montres connectées, audio sans fil et gadgets premium en Côte d'Ivoire, avec recherche de produits, panier, gestion des promotions, mode sombre/clair et commande rapide.",
+    role: "Développeur Full Stack — Conception de l'interface e-commerce responsive, catalogue produits, recherche, panier, authentification et déploiement.",
+    tech: [
+      { name: "React", icon: <SiReact /> },
+      { name: "TypeScript", icon: <SiTypescript /> },
+      { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+      { name: "Vite", icon: <SiVite /> },
+    ],
+    link: "https://onoot-boutique.vercel.app/",
+    type: "E-Commerce",
+    gradient: "from-amber-900/40 to-black",
+    image: "/assets/onoot-boutique.jpg",
+  },
   {
     title: "Post-it Notes Management",
     description:
@@ -35,7 +53,7 @@ const personalProjects = [
     link: "https://phenomenal-raindrop-ce5195.netlify.app/",
     type: "Individuel",
     gradient: "from-yellow-900/40 to-black",
-    image: "/assets/post-it.png.png",
+    image: "/assets/post-it.png",
   },
   {
     title: "Portfolio Génie Civil",
@@ -52,7 +70,7 @@ const personalProjects = [
     link: "https://cisse-ibrahim-matche-portfolio-lime-rho.vercel.app/",
     type: "Portfolio",
     gradient: "from-slate-700/40 to-black",
-    image: "/assets/portfolio-genie-civil.png.png",
+    image: "/assets/portfolio-genie-civil.png",
   },
 ];
 
@@ -71,7 +89,7 @@ const collaborativeProjects = [
     link: "https://projet-film-igayie1ua-seka.vercel.app/",
     type: "Frontend",
     gradient: "from-red-900/40 to-black",
-    image: "/assets/rotten-tomatoes.png.png",
+    image: "/assets/rotten-tomatoes.png",
   },
   {
     title: "My Show Time",
@@ -125,7 +143,7 @@ const hackathonProjects = [
     link: "https://macherplus.onrender.com/",
     type: "Hackathon",
     gradient: "from-green-900/40 to-black",
-    image: "/assets/marche-plus.png.png",
+    image: "/assets/marche-plus.png",
   },
   {
     title: "BioLinK AI",
@@ -199,8 +217,17 @@ function ProjectCard({ proj }: { proj: Project }) {
       {/* Background */}
       <div
         className={`absolute inset-0 bg-gradient-to-br ${proj.gradient} z-0 group-hover:scale-105 transition-transform duration-1000 ease-out`}
-        style={proj.image ? { backgroundImage: `url(${proj.image})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
-      />
+      >
+        {proj.image && (
+          <Image
+            src={proj.image}
+            alt={`Aperçu du projet ${proj.title}`}
+            fill
+            sizes="(max-width: 768px) 100vw, 1280px"
+            className="object-cover object-center"
+          />
+        )}
+      </div>
       {/* Dark overlay for project background */}
       <div className="absolute inset-0 bg-black/60 bg-gradient-to-t from-black/100 via-black/60 to-transparent group-hover:bg-black/30 transition-colors duration-500 z-[2] pointer-events-none" />
       {/* Grid overlay */}
@@ -250,7 +277,7 @@ function ProjectCard({ proj }: { proj: Project }) {
           <div className="opacity-100 translate-y-0 md:opacity-0 md:translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 mt-2 sm:mt-4 md:mt-0">
             {isExternal ? (
               <Button href={proj.link} variant="secondary">
-                Explorer →
+                {proj.linkLabel ? `${proj.linkLabel} →` : "Explorer →"}
               </Button>
             ) : (
               <span className="font-nunito text-sm text-white/30 italic">

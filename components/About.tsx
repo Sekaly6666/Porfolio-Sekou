@@ -59,6 +59,7 @@ export default function About() {
                 src="/assets/photo-bamba-sekou-amara-pro.jpg" 
                 alt="Photo de Bamba Sekou Amara" 
                 fill
+                sizes="(max-width: 1024px) 100vw, 42vw"
                 className="object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
               />
               <div className="absolute inset-0 border border-white/10 m-4 z-20 transition-all duration-700 group-hover:m-2" />
@@ -86,7 +87,7 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              Passionné par le développement web et mobile, je possède des compétences en <strong className="text-white font-medium">React, Next.js, Node.js, NestJS et React Native</strong>.
+              Diplômé d&apos;une <strong className="text-white font-medium">Licence en Développement d&apos;Applications et Services (UVCI)</strong> et formé en développement Full Stack à <strong className="text-white font-medium">WeCode (Epitech)</strong>, je conçois des applications web et mobiles performantes avec <strong className="text-white font-medium">React, Next.js, React Native, Node.js et NestJS</strong>.
             </motion.p>
             <motion.p 
               className="text-white/50 font-nunito leading-relaxed mb-16 text-lg md:text-xl font-light"
@@ -95,7 +96,7 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Je recherche une opportunité me permettant de mettre en pratique mes compétences, d'apprendre auprès de développeurs expérimentés et de contribuer à des projets innovants.
+              Rigoureux et orienté solutions, je recherche une opportunité (stage ou premier poste) de Développeur Full Stack afin de contribuer à des projets concrets et monter en expertise au sein d&apos;une équipe technique.
             </motion.p>
             
             {/* Stats - Awwwards style counter approach (static for now, can be animated) */}

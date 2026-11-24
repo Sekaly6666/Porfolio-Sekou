@@ -271,22 +271,22 @@ html.light .fixed.right-4 a:hover .h-px {
 }
 
 /* 9. Boutons Flottants en Mode Clair */
-html.light .fixed.bottom-8.right-4 span {
+html.light .floating-controls span {
   color: #334155 !important;
 }
 
-html.light .fixed.bottom-8.right-4 .rounded-full {
+html.light .floating-controls .rounded-full {
   background-color: rgba(255, 255, 255, 0.9) !important;
   border-color: rgba(0, 0, 0, 0.12) !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
 }
 
-html.light .fixed.bottom-8.right-4 .rounded-full svg {
+html.light .floating-controls .rounded-full svg {
   color: #334155 !important;
 }
 
-html.light .fixed.bottom-8.right-4 .group:hover .rounded-full svg,
-html.light .fixed.bottom-8.right-4 .group:hover span {
+html.light .floating-controls .group:hover .rounded-full svg,
+html.light .floating-controls .group:hover span {
   color: #D4AF37 !important;
 }
 

@@ -4,13 +4,13 @@ import { useRef } from "react";
 
 const experiences = [
   {
-    year: "Fév. 2025 – Fin Mai 2025",
+    year: "Fév. 2025 – Juin 2025 (5 mois)",
     title: "Agent Identificateur",
     company: "Anstat, Abidjan",
     description: "Identification et enrôlement des entrepreneurs de Côte d'Ivoire. Collecte et vérification des données d'identité sur le terrain. Saisie et gestion des informations."
   },
   {
-    year: "Oct. 2025 – Fin Nov 2025",
+    year: "Oct. 2025 – Nov. 2025 (2 mois)",
     title: "Agent Terrain",
     company: "Recrutement Marchand Orange, Abidjan",
     description: "Prospection et recrutement de marchands pour le réseau Orange. Accompagnement et sensibilisation aux services Orange Money. Fidélisation client."
@@ -19,13 +19,18 @@ const experiences = [
 
 const educations = [
   {
-    year: "2026",
+    year: "2026 (6 mois)",
     title: "Formation Full Stack (Certificat)",
     school: "WeCode (Epitech), Abidjan",
   },
   {
-    year: "2024 - 2025",
+    year: "2024 – 2025",
     title: "Licence en DAS (Diplômé)",
+    school: "Université Virtuelle de Côte d'Ivoire",
+  },
+  {
+    year: "2024 – 2025",
+    title: "Certificat Développement Web",
     school: "Université Virtuelle de Côte d'Ivoire",
   },
   {

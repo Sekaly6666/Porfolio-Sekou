@@ -13,9 +13,6 @@ import {
   FaCopy,
   FaCheck,
   FaArrowLeft,
-  FaUserCheck,
-  FaCode,
-  FaAward,
 } from "react-icons/fa";
 
 const GOLD = "#D4AF37";
@@ -186,9 +183,9 @@ export default function LDMPage() {
                     <Image
                       src="/assets/photo-bamba-sekou-amara-pro.jpg"
                       alt="Bamba Sekou Amara"
-                      layout="fill"
-                      objectFit="cover"
-                      objectPosition="center 15%"
+                      fill
+                      sizes="105px"
+                      className="object-cover object-[center_15%]"
                     />
                   </div>
                 </div>
@@ -310,7 +307,7 @@ export default function LDMPage() {
             >
               <div style={{ background: "white", padding: "4px", borderRadius: "4px" }}>
                 <QRCodeSVG
-                  value="https://cisse-ibrahim-matche-portfolio-lime-rho.vercel.app/"
+                  value="https://bamba-sekou-amara-porfolio-sekou.vercel.app/"
                   size={62}
                   level="M"
                 />
@@ -434,7 +431,7 @@ export default function LDMPage() {
                 </p>
 
                 <p>
-                  Mes réalisations concrètes — qu'il s'agisse de plateformes de réservation d'événements, d'applications mobiles collaboratives ou de tableaux de bord de gestion — témoignent de mon exigence technique. Plus particulièrement, lors des <strong>Hackathons 2026</strong>, j'ai eu l'opportunité de co-concevoir et déployer sous forte pression temporelle des projets primés tels que <strong>Marché +</strong> (solution B2B d'intelligence de marché) et <strong>BioLinK AI</strong> (plateforme mobile de collecte et valorisation des déchets). Ces expériences ont aiguisé ma résilience, ma vitesse d'exécution et ma capacité à faire converger la technique avec les objectifs métiers.
+                  Mes réalisations concrètes — qu'il s'agisse de plateformes de réservation d'événements, d'applications mobiles collaboratives ou de tableaux de bord de gestion — témoignent de mon exigence technique. Plus particulièrement, lors des <strong>Hackathons 2026</strong>, j'ai eu l'opportunité de co-concevoir et déployer sous forte pression temporelle des projets à fort impact tels que <strong>Marché +</strong> (solution B2B d'intelligence de marché) et <strong>BioLinK AI</strong> (plateforme mobile de collecte et valorisation des déchets). Ces expériences ont aiguisé ma résilience, ma vitesse d'exécution et ma capacité à faire converger la technique avec les objectifs métiers.
                 </p>
 
                 <p>
@@ -491,7 +488,7 @@ export default function LDMPage() {
         <div className="print-hidden fixed bottom-8 right-8 z-50 flex flex-col sm:flex-row items-center gap-3">
           <button
             onClick={copyToClipboard}
-            className="flex items-center gap-2 px-5 py-3 rounded-full bg-surface/90 text-textMain border border-borderSubtle hover:border-primary backdrop-blur-md transition-all shadow-xl font-nunito font-semibold text-sm hover:scale-105"
+            className="flex items-center gap-2 px-5 py-3 rounded-full bg-surface/90 text-textMain border border-white/15 hover:border-primary backdrop-blur-md transition-all shadow-xl font-nunito font-semibold text-sm hover:scale-105"
             title="Copier le texte de la lettre dans le presse-papier"
           >
             {copied ? <FaCheck className="text-primary" /> : <FaCopy className="text-primary" />}

@@ -1,22 +1,24 @@
 "use client";
 import { motion } from "framer-motion";
 import {
-  FaReact, FaNodeJs, FaVuejs, FaPython, FaPhp, FaDatabase,
-  FaDocker, FaFigma, FaPenNib, FaPaintBrush, FaUserTie,
-  FaFileAlt, FaPalette, FaMobileAlt, FaFileWord, FaFilePowerpoint,
-  FaHtml5, FaCss3Alt
+  FaReact, FaNodeJs, FaVuejs,
+  FaDocker, FaFigma, FaPenNib,
+  FaFileAlt, FaMobileAlt, FaFileWord, FaFilePowerpoint,
+  FaHtml5, FaCss3Alt, FaVideo, FaFilm
 } from "react-icons/fa";
-import { SiNextdotjs, SiNestjs, SiTailwindcss, SiTypescript, SiJavascript, SiFlutter, SiMongodb, SiPostgresql, SiMysql, SiBootstrap, SiGithub } from "react-icons/si";
+import { SiNextdotjs, SiNestjs, SiTailwindcss, SiTypescript, SiFlutter, SiMongodb, SiPostgresql, SiMysql, SiBootstrap, SiGithub } from "react-icons/si";
 
 const skillCategories = [
   {
-    category: "Frontend",
+    category: "Frontend & Mobile",
     skills: [
-      { name: "Flutter", percentage: 85, icon: <SiFlutter /> },
-      { name: "React Native", percentage: 82, icon: <FaMobileAlt /> },
       { name: "Next.js", percentage: 94, icon: <SiNextdotjs /> },
       { name: "React", percentage: 90, icon: <FaReact /> },
       { name: "Vue.js", percentage: 86, icon: <FaVuejs /> },
+      { name: "Flutter", percentage: 85, icon: <SiFlutter /> },
+      { name: "React Native", percentage: 82, icon: <FaMobileAlt /> },
+      { name: "Tailwind CSS", percentage: 95, icon: <SiTailwindcss /> },
+      { name: "Bootstrap", percentage: 90, icon: <SiBootstrap /> },
       { name: "HTML5", percentage: 95, icon: <FaHtml5 /> },
       { name: "CSS3", percentage: 92, icon: <FaCss3Alt /> },
     ],
@@ -35,8 +37,6 @@ const skillCategories = [
   {
     category: "Infra & DevOps",
     skills: [
-      { name: "Tailwind CSS", percentage: 95, icon: <SiTailwindcss /> },
-      { name: "Bootstrap", percentage: 90, icon: <SiBootstrap /> },
       { name: "Docker", percentage: 82, icon: <FaDocker /> },
       { name: "GitHub", percentage: 90, icon: <SiGithub /> },
     ],
@@ -51,11 +51,11 @@ const skillCategories = [
     ],
   },
   {
-    category: "Création & Branding",
+    category: "Création, Vidéo & IA",
     skills: [
-      { name: "Personal Branding", percentage: 88, icon: <FaUserTie /> },
       { name: "Création de CV", percentage: 94, icon: <FaFileAlt /> },
-      { name: "Design Graphique", percentage: 84, icon: <FaPalette /> },
+      { name: "Montage Vidéo (CapCut)", percentage: 75, icon: <FaVideo /> },
+      { name: "Vidéo & Cinéma IA (Google Flow)", percentage: 75, icon: <FaFilm /> },
     ],
   },
 ];

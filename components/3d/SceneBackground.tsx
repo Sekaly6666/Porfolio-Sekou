@@ -1,6 +1,6 @@
 "use client";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useEffect, useState } from "react";
 import * as THREE from "three";
 
 function Particles({ count = 500 }) {
@@ -53,11 +53,51 @@ function Particles({ count = 500 }) {
 }
 
 export default function SceneBackground() {
+  const [ready, setReady] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const [particleCount, setParticleCount] = useState(250);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mq.matches);
+    const onChange = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mq.addEventListener("change", onChange);
+
+    setParticleCount(window.innerWidth < 768 ? 120 : 250);
+
+    const win = window as Window & {
+      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+
+    let timerId: number;
+    if (win.requestIdleCallback) {
+      timerId = win.requestIdleCallback(() => setReady(true), { timeout: 300 });
+    } else {
+      timerId = window.setTimeout(() => setReady(true), 150);
+    }
+
+    return () => {
+      mq.removeEventListener("change", onChange);
+      if (win.cancelIdleCallback) {
+        win.cancelIdleCallback(timerId);
+      } else {
+        window.clearTimeout(timerId);
+      }
+    };
+  }, []);
+
+  if (reducedMotion || !ready) return null;
+
   return (
     <div className="fixed inset-0 z-0 pointer-events-none w-full h-full">
-      <Canvas camera={{ position: [0, 0, 15], fov: 75 }} gl={{ alpha: true }}>
+      <Canvas
+        camera={{ position: [0, 0, 15], fov: 75 }}
+        gl={{ alpha: true, antialias: false, powerPreference: "low-power" }}
+        dpr={[1, 1.25]}
+      >
         <ambientLight intensity={0.5} />
-        <Particles count={500} />
+        <Particles count={particleCount} />
       </Canvas>
     </div>
   );
