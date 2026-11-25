@@ -26,7 +26,7 @@ export default function Header() {
   return (
     <>
       {/* ── MOBILE TOP BAR (visible on < md) ── */}
-      <header className="fixed top-0 left-0 right-0 z-40 flex md:hidden items-center justify-between px-5 py-3.5 bg-background/70 backdrop-blur-md border-b border-white/5">
+      <header className="mobile-navbar fixed top-0 left-0 right-0 z-40 flex md:hidden items-center justify-between px-5 py-3.5 bg-background/70 backdrop-blur-md border-b border-white/5">
         <Link href="#hero" className="flex items-center gap-2">
           <span className="font-bebas text-2xl text-primary tracking-widest">BSA</span>
           <span className="text-[10px] font-nunito uppercase tracking-widest text-white/50 border-l border-white/10 pl-2">
@@ -51,7 +51,7 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-30 flex md:hidden flex-col justify-between bg-background/95 backdrop-blur-xl px-6 pt-24 pb-8"
+            className="mobile-menu-overlay fixed inset-0 z-30 flex md:hidden flex-col justify-between bg-background/95 backdrop-blur-xl px-6 pt-24 pb-8"
           >
             {/* Nav links */}
             <div className="flex flex-col gap-6 my-auto">

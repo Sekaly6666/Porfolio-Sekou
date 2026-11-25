@@ -245,7 +245,47 @@ html.light .bg-white\/20 {
   background-color: rgba(0, 0, 0, 0.1) !important;
 }
 
-/* 8. Barres de Navigation Gauche (Réseaux Sociaux) & Droite (Navigation) */
+/* 8. Barres de Navigation (Mobile + Gauche Réseaux Sociaux & Droite Navigation) */
+html.light .mobile-navbar {
+  background-color: rgba(244, 245, 248, 0.88) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+}
+
+html.light .mobile-navbar button {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+  color: #0f172a !important;
+}
+
+html.light .mobile-navbar button:hover {
+  border-color: #D4AF37 !important;
+  color: #D4AF37 !important;
+}
+
+html.light .mobile-menu-overlay {
+  background-color: rgba(244, 245, 248, 0.97) !important;
+}
+
+html.light .mobile-menu-overlay a {
+  color: #0f172a !important;
+}
+
+html.light .mobile-menu-overlay a:hover {
+  color: #D4AF37 !important;
+}
+
+html.light .mobile-menu-overlay .rounded-xl,
+html.light .mobile-menu-overlay .rounded-full {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light .mobile-menu-overlay .rounded-xl:hover,
+html.light .mobile-menu-overlay .rounded-full:hover {
+  border-color: #D4AF37 !important;
+}
+
 html.light .fixed.bottom-8.left-4 a,
 html.light .fixed.right-4 a {
   color: #334155 !important;
