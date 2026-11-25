@@ -37,6 +37,11 @@ const educations = [
     year: "2024",
     title: "Certification MOS",
     school: "Microsoft Office Specialist",
+  },
+  {
+    year: "2022",
+    title: "Baccalauréat",
+    school: "Groupe COFE-CESA, Koumassi (Abidjan)",
   }
 ];
 

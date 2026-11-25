@@ -238,7 +238,7 @@ export default function CVPage() {
               <SidebarTitle>Langues</SidebarTitle>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '12px', color: 'rgba(255,255,255,0.8)' }}>
                 <li><strong style={{ color: 'white' }}>Français :</strong> Courant (professionnel)</li>
-                <li><strong style={{ color: 'white' }}>Anglais :</strong> Technique (notion)</li>
+                <li><strong style={{ color: 'white' }}>Anglais :</strong> B1 (Intermédiaire)</li>
               </ul>
             </div>
 
@@ -265,7 +265,7 @@ export default function CVPage() {
           {/* ══════════ MAIN CONTENT (LIGHT) ══════════ */}
           <div style={{
             width: '66%',
-            padding: '36px 38px 32px 38px',
+            padding: '26px 34px 22px 34px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
@@ -277,7 +277,7 @@ export default function CVPage() {
             <div>
               <h1 style={{
                 fontFamily: "'Bebas Neue', sans-serif",
-                fontSize: '44px',
+                fontSize: '42px',
                 letterSpacing: '0.05em',
                 color: DARK,
                 lineHeight: 0.9,
@@ -287,11 +287,11 @@ export default function CVPage() {
               </h1>
               <h2 style={{
                 fontFamily: "'Nunito', sans-serif",
-                fontSize: '12px',
+                fontSize: '11.5px',
                 letterSpacing: '0.22em',
                 color: TEXT_MUTED,
                 textTransform: 'uppercase',
-                marginTop: '8px',
+                marginTop: '6px',
                 fontWeight: 800,
               }}>
                 Développeur Full Stack Junior
@@ -301,30 +301,64 @@ export default function CVPage() {
             {/* PROFIL */}
             <div>
               <p style={{
-                fontSize: '12.5px',
-                lineHeight: 1.7,
+                fontSize: '11.8px',
+                lineHeight: 1.55,
                 color: TEXT_DARK,
                 textAlign: 'justify',
               }}>
-                <strong style={{ color: DARK }}>Diplômé d&apos;une Licence en Développement d&apos;Applications et Services (UVCI) et formé en développement Full Stack à WeCode (Epitech)</strong>, je conçois des applications web et mobiles performantes avec <strong style={{ color: DARK }}>React, Next.js, React Native, Node.js et NestJS</strong>. Rigoureux et orienté solutions, je recherche <strong style={{ color: DARK }}>une opportunité (stage ou premier poste) de Développeur Full Stack</strong> afin de contribuer à des projets concrets et monter en expertise au sein d&apos;une équipe technique.
+                <strong style={{ color: DARK }}>Diplômé d&apos;une Licence en Développement d&apos;Applications et Services (UVCI) et certifié en développement Full Stack à WeCode (Epitech)</strong>, je conçois des applications web et mobiles performantes avec <strong style={{ color: DARK }}>React, Next.js, React Native, Node.js et NestJS</strong>. Rigoureux et orienté solutions, je recherche <strong style={{ color: DARK }}>une opportunité (stage ou premier poste) de Développeur Full Stack</strong> afin de contribuer à des projets concrets et monter en expertise au sein d&apos;une équipe technique.
+              </p>
+            </div>
+
+            {/* PROJETS RÉALISÉS (en premier pour valoriser le profil dev) */}
+            <div>
+              <MainTitle icon={<FaCode />}>Projets Réalisés</MainTitle>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '9px' }}>
+                {[
+                  {
+                    title: 'Onoot Boutique',
+                    sub: '(Projet Personnel)',
+                    desc: "Plateforme e-commerce d'accessoires High-Tech avec catalogue, recherche, panier et gestion des promotions.",
+                    tech: 'React, TypeScript, Tailwind CSS, Vite.',
+                    role: 'Conception complète, interface responsive et déploiement.',
+                  },
+                  {
+                    title: 'My Show Time',
+                    sub: '(En Groupe de 4 — Backend)',
+                    desc: 'Plateforme de réservation de billets de concerts et festivals avec QR Codes et tableau de bord admin.',
+                    tech: 'NestJS, Node.js, MongoDB, JWT.',
+                    role: 'Back-end, gestion des favoris et interactions avec la base de données MongoDB.',
+                  },
+                  {
+                    title: 'Trelltech',
+                    sub: '(En Groupe de 5 — Mobile / Frontend)',
+                    desc: 'Application mobile permettant de naviguer sur Trello avec authentification et recherche.',
+                    tech: 'React Native, API Trello, OAuth2, TypeScript.',
+                    role: 'Front-end, profils utilisateurs et authentification.',
+                  },
+                ].map((p, i) => (
+                  <div key={i} style={{ fontSize: '11px', color: TEXT_DARK, lineHeight: 1.45 }}>
+                    <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px', marginBottom: '1px' }}>
+                      <strong style={{ color: DARK, fontSize: '12px' }}>Projet :</strong>
+                      <span style={{ fontWeight: 800, color: GOLD, fontSize: '12px' }}>{p.title}</span>
+                      <span style={{ fontSize: '9.5px', color: TEXT_MUTED, fontStyle: 'italic', marginLeft: '2px' }}>{p.sub}</span>
+                    </div>
+                    <div><strong style={{ color: DARK }}>Description :</strong> {p.desc}</div>
+                    <div><strong style={{ color: DARK }}>Technologies :</strong> {p.tech}</div>
+                    <div><strong style={{ color: DARK }}>Rôle :</strong> {p.role}</div>
+                  </div>
+                ))}
+              </div>
+              <p style={{ fontSize: '9px', color: TEXT_MUTED, fontStyle: 'italic', marginTop: '4px', textAlign: 'right' }}>
+                * D&apos;autres projets ont été réalisés et sont consultables sur mon portfolio.
               </p>
             </div>
 
             {/* EXPÉRIENCES PROFESSIONNELLES */}
             <div>
               <MainTitle icon={<FaBriefcase />}>Expériences Professionnelles</MainTitle>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {[
-                  {
-                    role: 'Agent Identificateur',
-                    company: 'Anstat',
-                    loc: 'Abidjan',
-                    date: 'Fév. 2025 – Juin 2025 (5 mois)',
-                    items: [
-                      "Identification et enrôlement des entrepreneurs de Côte d'Ivoire.",
-                      "Collecte, vérification des données d'identité sur le terrain et gestion numérisée."
-                    ],
-                  },
                   {
                     role: 'Agent Terrain – Recrutement Marchand',
                     company: 'Orange',
@@ -335,18 +369,28 @@ export default function CVPage() {
                       'Accompagnement, sensibilisation aux services Orange Money et fidélisation client.'
                     ],
                   },
+                  {
+                    role: 'Agent Identificateur',
+                    company: 'Anstat',
+                    loc: 'Abidjan',
+                    date: 'Fév. 2025 – Juin 2025 (5 mois)',
+                    items: [
+                      "Identification et enrôlement des entrepreneurs de Côte d'Ivoire.",
+                      "Collecte, vérification des données d'identité sur le terrain et gestion numérisée."
+                    ],
+                  },
                 ].map((e, i) => (
                   <div key={i}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px', gap: '8px' }}>
-                      <h4 style={{ fontWeight: 800, fontSize: '13px', color: DARK, flex: 1 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2px', gap: '8px' }}>
+                      <h4 style={{ fontWeight: 800, fontSize: '12px', color: DARK, flex: 1 }}>
                         {e.role} <span style={{ color: GOLD, fontWeight: 600 }}>|</span> <span style={{ fontWeight: 600, color: TEXT_MUTED }}>{e.company}, {e.loc}</span>
                       </h4>
                       <DateBadge>{e.date}</DateBadge>
                     </div>
-                    <ul style={{ color: TEXT_DARK, fontSize: '12px', lineHeight: 1.7, paddingLeft: '4px' }}>
+                    <ul style={{ color: TEXT_DARK, fontSize: '11px', lineHeight: 1.48, paddingLeft: '4px' }}>
                       {e.items.map((it, j) => (
                         <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '4px' }}>
-                          <span style={{ transform: 'translateY(3px)' }}><Bullet /></span>
+                          <span style={{ transform: 'translateY(2px)' }}><Bullet /></span>
                           <span>{it}</span>
                         </li>
                       ))}
@@ -356,56 +400,19 @@ export default function CVPage() {
               </div>
             </div>
 
-            {/* PROJETS RÉALISÉS */}
-            <div>
-              <MainTitle icon={<FaCode />}>Projets Réalisés</MainTitle>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                {[
-                  {
-                    title: 'Trelltech',
-                    sub: '(En Groupe de 5 personnes)',
-                    desc: 'Application mobile permettant de naviguer sur Trello.',
-                    tech: 'React Native, API Trello, OAuth2.',
-                    role: 'Front-end, profils utilisateurs et authentification.',
-                  },
-                  {
-                    title: 'My Rotten Tomatoes',
-                    sub: '(En Groupe de 4 personnes)',
-                    desc: 'Plateforme web de consultation, notation et avis de films.',
-                    tech: 'Next.js, TMDB API, HTML5, CSS3, JavaScript.',
-                    role: 'Front-end, interfaces, notation, favoris et avis.',
-                  },
-                ].map((p, i) => (
-                  <div key={i} style={{ fontSize: '12px', color: TEXT_DARK, lineHeight: 1.65 }}>
-                    <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px', marginBottom: '3px' }}>
-                      <strong style={{ color: DARK, fontSize: '13px' }}>Projet :</strong>
-                      <span style={{ fontWeight: 800, color: GOLD, fontSize: '13px' }}>{p.title}</span>
-                      <span style={{ fontSize: '10px', color: TEXT_MUTED, fontStyle: 'italic', marginLeft: '2px' }}>{p.sub}</span>
-                    </div>
-                    <div><strong style={{ color: DARK }}>Description :</strong> {p.desc}</div>
-                    <div><strong style={{ color: DARK }}>Technologies :</strong> {p.tech}</div>
-                    <div><strong style={{ color: DARK }}>Rôle :</strong> {p.role}</div>
-                  </div>
-                ))}
-              </div>
-              <p style={{ fontSize: '9.5px', color: TEXT_MUTED, fontStyle: 'italic', marginTop: '8px', textAlign: 'right' }}>
-                * D'autres projets ont été réalisés, mais ne peuvent tous figurer ici.
-              </p>
-            </div>
-
             {/* FORMATION & CERTIFICATS */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
 
-              {/* FORMATION */}
+              {/* FORMATION ACADÉMIQUE */}
               <div>
                 <MainTitle icon={<FaGraduationCap />}>Formation Académique</MainTitle>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
                   {[
-                    { title: 'Formation Full Stack (Certificat)', org: 'WeCode (Epitech), Abidjan', date: '2026 (6 mois)' },
-                    { title: 'Licence en DAS (Diplômé)', org: 'Université Virtuelle de Côte d\'Ivoire', date: '2024 – 2025' },
+                    { title: 'Licence en DAS (Diplômé)', org: "Université Virtuelle de Côte d'Ivoire", date: '2024 – 2025' },
+                    { title: 'Baccalauréat', org: 'Groupe COFE-CESA, Koumassi (Abidjan)', date: '2022' },
                   ].map((f, i) => (
                     <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px' }}>
-                      <h4 style={{ fontWeight: 800, fontSize: '12.5px', color: DARK, flex: 1, lineHeight: 1.5 }}>
+                      <h4 style={{ fontWeight: 800, fontSize: '11.5px', color: DARK, flex: 1, lineHeight: 1.4 }}>
                         {f.title} <span style={{ color: TEXT_MUTED, fontWeight: 600 }}>| {f.org}</span>
                       </h4>
                       <DateBadge>{f.date}</DateBadge>
@@ -417,13 +424,14 @@ export default function CVPage() {
               {/* CERTIFICATS */}
               <div>
                 <MainTitle icon={<FaCertificate />}>Certificats</MainTitle>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
                   {[
+                    { title: 'Développement Full Stack (Certificat)', org: 'WeCode (Epitech), Abidjan', date: '2026 (6 mois)' },
                     { title: 'Développement Web', org: 'Université Virtuelle de CI', date: '2024 – 2025' },
                     { title: 'Microsoft Office Specialist (MOS)', org: 'Certification officielle Microsoft', date: '2024' },
                   ].map((c, i) => (
                     <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px' }}>
-                      <h4 style={{ fontWeight: 800, fontSize: '12.5px', color: DARK, flex: 1, lineHeight: 1.5 }}>
+                      <h4 style={{ fontWeight: 800, fontSize: '11.5px', color: DARK, flex: 1, lineHeight: 1.4 }}>
                         {c.title} <span style={{ color: TEXT_MUTED, fontWeight: 600 }}>| {c.org}</span>
                       </h4>
                       <DateBadge>{c.date}</DateBadge>

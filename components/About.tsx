@@ -87,7 +87,7 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              Diplômé d&apos;une <strong className="text-white font-medium">Licence en Développement d&apos;Applications et Services (UVCI)</strong> et formé en développement Full Stack à <strong className="text-white font-medium">WeCode (Epitech)</strong>, je conçois des applications web et mobiles performantes avec <strong className="text-white font-medium">React, Next.js, React Native, Node.js et NestJS</strong>.
+              Diplômé d&apos;une <strong className="text-white font-medium">Licence en Développement d&apos;Applications et Services (UVCI)</strong> et certifié en développement Full Stack à <strong className="text-white font-medium">WeCode (Epitech)</strong>, je conçois des applications web et mobiles performantes avec <strong className="text-white font-medium">React, Next.js, React Native, Node.js et NestJS</strong>.
             </motion.p>
             <motion.p 
               className="text-white/50 font-nunito leading-relaxed mb-16 text-lg md:text-xl font-light"
